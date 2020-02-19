@@ -1,0 +1,49 @@
+footer {
+  margin-top: -100px;
+  background-image: url("../img/common/footer-ellipse.svg");
+  background-position: top center;
+  font-family: 'DINPro', sans-serif;
+  color: $color-footer-text;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 32px;
+  padding-bottom: 30px;
+  z-index: 3;
+
+  position: relative;
+  box-sizing: border-box;
+
+  * {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 606px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 34px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .footer-logo {
+    width: 138px;
+    height: auto;
+    margin-bottom: 26px
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+
+    span {
+      left: -5px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+html, body {
+  position: relative;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea, button {
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+
+* {
+  background-repeat: no-repeat;
+}

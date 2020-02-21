@@ -47,3 +47,39 @@ footer {
     }
   }
 }
+
+@media screen and (max-width: $adaptive-mobile-top) {
+
+  footer {
+    margin-top: 0;
+    background-color: white;
+    background-image: none;
+    padding-top: 35px;
+
+    .container {
+      width: 100%;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      margin-bottom: 29px;
+
+      a {
+        margin-bottom: 22px;
+      }
+    }
+
+    .footer-logo {
+
+    }
+
+    .footer-copyright {
+      max-width: 265px;
+      margin: 0 auto;
+
+      span {
+      }
+    }
+  }
+
+}

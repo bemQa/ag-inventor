@@ -7,11 +7,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>AlpenGold</title>
 </head>
-<body style="opacity: 0">
+<body>
+
+<div class="header-bg"></div>
 
 <header>
-  <div class="header-bg"></div>
-  <div class="header-bg--mobile-addition"></div>
+  <div class="header-bg--mobile-addition">
+    <a href="/">
+      <img src="/img/mobile/ag-logo.png"
+           alt="Alpen Gold">
+    </a>
+  </div>
 
   <div class="container">
 
@@ -22,10 +28,11 @@
         <a href="#">Правила</a>
       </div>
       <div class="header-desktop-right">
-        <a href="#" class="enter-link">Вход</a>
+        <a href="#" class="enter-link" data-popup="enter">Вход</a>
         <a href="#" class="special-page-link">FAQ</a>
       </div>
     </div>
+
     <div class="mobile">
       <div class="header-mobile-left">
         <div class="mobile-menu-btn">
@@ -123,8 +130,93 @@
   </div>
 </footer>
 
-<div class="popups">
+<div class="popup">
 
+  <div class="popup-content popup-content--enter">
+    <div class="popup-close"></div>
+    <div class="popup-container">
+
+      <div class="popup-title">
+        Регистрация
+      </div>
+
+      <form>
+
+        <div class="input-group input-group--text">
+          <label for="reg_surname">
+            Фамилия
+          </label>
+          <input type="text"
+                 name="surname"
+                 id="reg_surname"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text">
+          <label for="reg_name">
+            Имя
+          </label>
+          <input type="text"
+                 name="name"
+                 id="reg_name"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text">
+          <label for="reg_email">
+            Email
+          </label>
+          <input type="email"
+                 name="email"
+                 id="reg_email"
+                 required>
+        </div>
+
+        <div class="input-group input-group--checkbox">
+          <input type="checkbox"
+                 name="sales_agreement"
+                 id="reg_sales_agreement">
+          <div class="pseudo-checkbox selected"></div>
+          <label for="reg_sales_agreement">
+            Я согласен с правилами акции
+          </label>
+        </div>
+
+        <div class="input-group input-group--checkbox">
+          <input type="checkbox"
+                 name="policy_agreement"
+                 id="reg_policy_agreement">
+          <div class="pseudo-checkbox selected"></div>
+          <label for="reg_policy_agreement">
+            Я согласен на обработку моих
+            <br>
+            персональных данных
+          </label>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="reg-captcha">
+      <div class="captcha-title">
+        Введи символы с картинки
+      </div>
+      <div class="captcha-body">
+        <div class="captcha-code-img"></div>
+        <div class="captcha-form">
+          <div class="captcha-input"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-container">
+      <button class="button--blue popup--reg-submit-btn">
+        Зарегистрироваться
+      </button>
+    </div>
+
+  </div>
 
 </div>
 

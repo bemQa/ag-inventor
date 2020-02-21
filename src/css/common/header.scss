@@ -1,3 +1,12 @@
+.header-bg {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: $color-choco;
+  z-index: -1;
+}
+
 header {
   font-family: 'MDLZ', sans-serif;
   font-size: 14px;
@@ -10,15 +19,16 @@ header {
     box-sizing: border-box;
   }
 
-  .container {
-    margin: 0 auto;
-    width: 1280px;
-    height: 40px;
-    padding-left: 4px;
+  .header-bg--mobile-addition {
+    display: none;
   }
 
-  .header-bg {
-    display: none;
+  .container {
+    margin: 0 auto;
+    width: 1320px;
+    height: 40px;
+    max-width: 100%;
+    padding: 0 20px 0 24px;
   }
 
   .desktop {
@@ -97,17 +107,64 @@ header {
   }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: $adaptive-mobile-top) {
 
   header {
 
-    .header-bg {
+    .header-bg--mobile-addition {
       display: block;
       position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100%;
-      background-color: $color-choco;
-      z-index: 2;
+      height: 90px;
+      text-align: center;
+      background-image: url("../img/common/menu-form.png");
+      background-position: top center;
+      background-size: auto 100%;
+
+      a {
+        display: block;
+        text-align: center;
+        width: 100%;
+
+        img {
+          margin: 0 auto;
+          top: 9px;
+        }
+      }
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    .container {
+      padding: 0 20px;
+    }
+
+    .mobile {
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      height: 40px;
+      line-height: 40px;
+
+      .mobile-menu-btn {
+        padding-left: 20px;
+        background-image: url("../img/common/burger.svg");
+        cursor: pointer;
+        background-position: 0 15px;
+      }
+
+      .header-mobile-left {
+        text-align: right;
+
+        .enter-mobile-button {
+          cursor: pointer;
+        }
+      }
     }
   }
 

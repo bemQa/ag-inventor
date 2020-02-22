@@ -2,12 +2,15 @@ import "../css/entry.scss"
 import $ from 'jquery'
 import {initDevState} from "./dev";
 import './images_import';
+import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 $(document).ready(_ => {
   initDevState();
   setPageSizeTypes();
   stickFooter();
   bindListeners();
+  tryLoadScrollbarFor_FAQ();
 });
 
 window.config = {
@@ -57,9 +60,10 @@ function bindListeners() {
   });
 
   $('.faq--question-header').on('click', e => {
-      $(e.target)
-          .parents('.faq--question')
-          .toggleClass('faq--question--opened');
+    $(e.target)
+        .parents('.faq--question')
+        .toggleClass('faq--question--opened');
+    window.faqScrollbar.update();
   });
 }
 
@@ -74,11 +78,11 @@ function stickFooter() {
       windowBodyHeightsDifference = window.innerHeight - body.innerHeight(),
       footer = $('footer');
 
-    if (windowBodyHeightsDifference > 0) {
-      footer.css('top', `${windowBodyHeightsDifference - 12}px`);
-    } else {
-      footer.css('top', 0);
-    }
+  if (windowBodyHeightsDifference > 0) {
+    footer.css('top', `${windowBodyHeightsDifference - 12}px`);
+  } else {
+    footer.css('top', 0);
+  }
 }
 
 function showPopup(type) {
@@ -206,8 +210,8 @@ function submitRegForm(form) {
 function togglePseudoCheckbox(pseudoCheckbox) {
 
   let checkbox = pseudoCheckbox
-          .parents('.input-group')
-          .find('[type="checkbox"]');
+      .parents('.input-group')
+      .find('[type="checkbox"]');
 
   pseudoCheckbox.toggleClass('selected');
 
@@ -218,3 +222,13 @@ function togglePseudoCheckbox(pseudoCheckbox) {
   }
 }
 
+function tryLoadScrollbarFor_FAQ() {
+
+  let faqContainer = $('.faq--wrap-level-2');
+
+  if (faqContainer.length === 0) {
+    return null;
+  }
+
+  window.faqScrollbar = new PerfectScrollbar(faqContainer.toArray()[0]);
+}

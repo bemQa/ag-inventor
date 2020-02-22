@@ -34,9 +34,28 @@ body.faq-page {
   }
 
   .faq--wrap-level-2 {
+    position: relative;
     height: 100%;
     box-sizing: border-box;
     overflow: auto;
+
+    .ps__rail-x {
+      display: none !important;
+    }
+
+    .ps__rail-y {
+      background-color: $color-yellow !important;
+      opacity: 1 !important;
+      width: 6px !important;
+      border-radius: 0;
+
+      .ps__thumb-y {
+        background-color: $color-choco-2 !important;
+        border-radius: 0;
+        left: 1px;
+      }
+    }
+
   }
 
   .faq--list {
@@ -63,6 +82,7 @@ body.faq-page {
 
         .faq--question-button {
           border: 2px solid $color-choco-2;
+          background-color: $color-choco-2;
           width: 20px;
           height: 20px;
           margin-right: 16px;
@@ -76,7 +96,7 @@ body.faq-page {
             left: 3px;
             width: 10px;
             height: 2px;
-            background-color: $color-choco-2;
+            background-color: white;
             transform: rotate(90deg);
           }
 
@@ -88,7 +108,7 @@ body.faq-page {
             left: 3px;
             width: 10px;
             height: 2px;
-            background-color: $color-choco-2;
+            background-color: white;
           }
         }
 
@@ -111,10 +131,10 @@ body.faq-page {
 
         .faq--question-header {
           .faq--question-button {
-            background-color: $color-choco-2;
+            background-color: white;
 
             &:before {
-              background-color: white;
+              background-color: $color-choco-2;
             }
 
             &:after {

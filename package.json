@@ -34,5 +34,7 @@
     "webpack-dev-server": "^3.8.0",
     "xml-loader": "^1.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "perfect-scrollbar": "^1.5.0"
+  }
 }

@@ -68,7 +68,7 @@ module.exports = {
             name: 'img/[folder]/[name].[ext]'
           }
         }]
-      },
+      }
     ]
   },
   plugins: [

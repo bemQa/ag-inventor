@@ -40,7 +40,8 @@
         </div>
       </div>
       <div class="header-mobile-left">
-        <div class="enter-mobile-button">
+        <div class="enter-mobile-button"
+             data-popup="enter">
           Вход
         </div>
       </div>
@@ -93,7 +94,8 @@
     <div class="main-page-blocks--button-wrap">
       <div class="button-light"></div>
       <a href="#"
-         class="button button--blue main-page--cta-button">
+         class="button button--blue main-page--cta-button"
+         data-popup="reg">
         Участвовать
       </a>
     </div>
@@ -130,17 +132,66 @@
   </div>
 </footer>
 
-<div class="popup">
+<div class="popup"
+     style="opacity: 0">
 
   <div class="popup-content popup-content--enter">
     <div class="popup-close"></div>
     <div class="popup-container">
 
       <div class="popup-title">
-        Регистрация
+        Вход
       </div>
 
-      <form>
+      <form id="enter_form">
+
+        <div class="input-group input-group--text">
+          <label for="enter_email">
+            E-mail
+          </label>
+          <input type="email"
+                 name="enter_email"
+                 id="enter_email"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text">
+          <label for="enter_password">
+            Пароль
+          </label>
+          <input type="password"
+                 name="enter_password"
+                 id="enter_password"
+                 required>
+        </div>
+
+        <button class="button button--blue popup--enter-submit-btn">
+          Вход
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="popup-content popup-content--service">
+    <div class="popup-close"></div>
+    <div class="popup-container">
+      <div class="popup-title service-msg-title"></div>
+      <p class="service-msg-body"></p>
+    </div>
+  </div>
+
+  <div class="popup-content popup-content--reg">
+    <div class="popup-close"></div>
+    <form id="reg_form">
+
+      <div class="popup-container">
+
+        <div class="popup-title">
+          Регистрация
+        </div>
+
 
         <div class="input-group input-group--text">
           <label for="reg_surname">
@@ -149,6 +200,7 @@
           <input type="text"
                  name="surname"
                  id="reg_surname"
+                 value="Горностаев-Антонов"
                  required>
         </div>
 
@@ -159,10 +211,11 @@
           <input type="text"
                  name="name"
                  id="reg_name"
+                 value="Александр"
                  required>
         </div>
 
-        <div class="input-group input-group--text">
+        <div class="input-group input-group--text input-group--reg-email">
           <label for="reg_email">
             Email
           </label>
@@ -175,7 +228,8 @@
         <div class="input-group input-group--checkbox">
           <input type="checkbox"
                  name="sales_agreement"
-                 id="reg_sales_agreement">
+                 id="reg_sales_agreement"
+                 value="on">
           <div class="pseudo-checkbox selected"></div>
           <label for="reg_sales_agreement">
             Я согласен с правилами акции
@@ -185,7 +239,8 @@
         <div class="input-group input-group--checkbox">
           <input type="checkbox"
                  name="policy_agreement"
-                 id="reg_policy_agreement">
+                 id="reg_policy_agreement"
+                 value="on">
           <div class="pseudo-checkbox selected"></div>
           <label for="reg_policy_agreement">
             Я согласен на обработку моих
@@ -194,30 +249,34 @@
           </label>
         </div>
 
-      </form>
 
-    </div>
-
-    <div class="reg-captcha">
-      <div class="captcha-title">
-        Введи символы с картинки
       </div>
-      <div class="captcha-body">
-        <div class="captcha-code-img"></div>
-        <div class="captcha-form">
-          <div class="captcha-input"></div>
+
+      <div class="reg-captcha">
+        <div class="captcha-title">
+          Введи символы с картинки
+        </div>
+        <div class="captcha-body">
+          <div class="captcha-code-img"></div>
+          <div class="captcha-form">
+            <input
+                type="text"
+                name="reg_captcha"
+                id="reg_captcha"
+                value="55763"
+                class="captcha-input">
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="popup-container">
-      <button class="button--blue popup--reg-submit-btn">
-        Зарегистрироваться
-      </button>
-    </div>
+      <div class="popup-container">
+        <button class="button button--blue popup--reg-submit-btn">
+          Зарегистрироваться
+        </button>
+      </div>
+    </form>
 
   </div>
-
 </div>
 
 <div class="template"></div>

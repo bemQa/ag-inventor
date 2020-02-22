@@ -6,17 +6,19 @@
   height: 100%;
   background: rgba(255, 255, 255, .7);
   display: flex;
+  padding: 15px;
   align-items: flex-start;
+  padding-top: 159px;
   //align-items: center;
   justify-content: center;
-  padding: 15px;
-  padding-top: 150px;
-  z-index: 1000;
   overflow-y: auto;
-  transition: 300ms opacity linear;
   opacity: 0;
   visibility: hidden;
+  transition:
+          300ms opacity linear,
+          300ms visibility linear;
   box-sizing: border-box;
+  z-index: 5;
 
   * {
     position: relative;
@@ -24,7 +26,7 @@
   }
 
   &.active {
-    opacity: 1;
+    opacity: 1 !important;
     visibility: visible;
   }
 
@@ -35,7 +37,6 @@
     background: $color-choco;
     width: 100%;
     max-width: 300px;
-    padding: 21px 20px 30px;
     position: relative;
     border-radius: 20px;
     color: white;
@@ -45,18 +46,178 @@
       display: block;
     }
 
+    label {
+      cursor: pointer;
+    }
+
     input {
       display: block;
       width: 100%;
-      border-radius: 8px;
-      margin: 10px auto;
+      margin: 0 auto;
       font-family: "PT Sans", sans-serif;
-      padding: 10px;
+      padding: 11px 21px;
+      border-radius: 25px;
+      color: $color-choco-2;
     }
 
     input[type="checkbox"] {
       display: none;
     }
+
+    .popup-title {
+      text-align: center;
+      font-family: MDLZ, sans-serif;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: -19px;
+      right: -19px;
+      width: 38px;
+      height: 38px;
+      border-radius: 100px;
+      background-image: url("../img/common/close-choco.svg");
+      background-size: 14px auto;
+      background-position: center;
+      background-color: white;
+      border: 1px solid $color-choco-2;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .popup-container {
+      padding: 21px 20px 30px;
+    }
+
+    .input-group {
+      font-size: 14px;
+
+      &:not(:last-child) {
+        margin-bottom: 13px;
+      }
+
+      &.input-group--text {
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          padding-left: 22px;
+          font-size: 12px;
+        }
+
+        input {
+          font-size: 20px;
+        }
+      }
+
+      &.input-group--checkbox {
+        padding-left: 11px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:not(:last-child) {
+          margin-bottom: 18px;
+        }
+
+        label {
+          line-height: 14px;
+          font-size: 11.5px;
+
+          [for="reg_sales_agreement"] {
+            top: -2px;
+          }
+
+          [for="reg_sales_agreement"] {
+            top: 1px;
+          }
+        }
+
+        input {
+          display: none;
+        }
+
+        .pseudo-checkbox {
+          background-color: white;
+          border-radius: 10px;
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+          cursor: pointer;
+
+          &.selected {
+            background-image: url("../img/common/input-mark.svg");
+            background-position: center;
+          }
+        }
+      }
+
+      &.input-group--reg-email {
+        margin-top: 17px;
+        margin-bottom: 32px;
+      }
+    }
+
+    &.popup-content--enter {
+
+      .popup--enter-submit-btn {
+        display: block;
+        margin: 30px auto 0;
+      }
+    }
+
+    &.popup-content--reg {
+
+      .reg-captcha {
+        background-color: $color-form-yellow-bg;
+        padding: 16px 30px 20px;
+
+        .captcha-title {
+          text-align: center;
+          font-size: 11.5px;
+          color: $color-choco-2;
+          margin-bottom: 8px;
+        }
+
+        .captcha-body {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-image: url("../img/common/captcha-bg-arrow.svg");
+          background-position: center 19px;
+
+          .captcha-code-img {
+            height: 38px;
+            width: 100px;
+            background-image: url("../img/common/captcha-dummy.jpg");
+            background-size: 100% auto;
+          }
+
+          .captcha-form {
+
+            .captcha-input {
+              width: 100px;
+              border-radius: 25px;
+              font-size: 21px;
+              height: 50px;
+              border: 1px solid $color-choco-2;
+              padding: 5px 12px 10px;
+              text-align: center;
+              background-color: white;
+            }
+          }
+        }
+      }
+
+      .popup--reg-submit-btn {
+        margin: 9px auto 0;
+        padding: 10px 19px;
+        display: block;
+      }
+    }
   }
+
 
 }

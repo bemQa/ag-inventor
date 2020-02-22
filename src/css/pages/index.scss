@@ -95,23 +95,6 @@
 
   }
 
-  .button {
-    font-family: MDLZ, sans-serif;
-    font-size: 24px;
-    color: white;
-    padding: 10px 32px;
-    border-radius: 100px;
-    transition: background-color .3s;
-
-    &--blue {
-      background-color: $color-primary-btn-bg;
-
-      &:hover {
-        background-color: $color-primary-btn-hover;
-      }
-    }
-  }
-
   .main-page--cta-button {
     margin: 0 auto;
     left: -28px;

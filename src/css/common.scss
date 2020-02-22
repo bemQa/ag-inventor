@@ -55,7 +55,23 @@ button {
   cursor: pointer;
 }
 
+.button {
+  font-family: MDLZ, sans-serif;
+  font-size: 24px;
+  color: white;
+  padding: 10px 32px;
+  border-radius: 100px;
+  transition: background-color .3s;
 
+  &--blue {
+    color: white;
+    background-color: $color-primary-btn-bg;
+
+    &:hover {
+      background-color: $color-primary-btn-hover;
+    }
+  }
+}
 
 @media screen and (max-width: $adaptive-mobile-top) {
 

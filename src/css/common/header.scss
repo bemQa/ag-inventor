@@ -102,6 +102,15 @@ header {
         color: $color-yellow;
       }
 
+      &.faq-link {
+        &.active-link {
+          &::before {
+            left: 5px;
+            background-image: url("../img/common/arrow-down-polygon-yellow.svg");
+          }
+        }
+      }
+
       &.active-link {
         &::before {
           content: '';

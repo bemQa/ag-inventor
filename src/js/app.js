@@ -55,6 +55,12 @@ function bindListeners() {
   $('.input-group--checkbox label').on('click', e => {
     $(e.target).siblings('.pseudo-checkbox').click();
   });
+
+  $('.faq--question-header').on('click', e => {
+      $(e.target)
+          .parents('.faq--question')
+          .toggleClass('faq--question--opened');
+  });
 }
 
 function setPageSizeTypes() {

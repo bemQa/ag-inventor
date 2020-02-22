@@ -1,0 +1,54 @@
+.cup-page {
+  background-image: url("../img/common/cup.png"), url("../img/common/bg-2.jpg");
+  background-position: center 160px, top center;
+  background-size: auto, cover;
+}
+
+.error-page-content {
+  position: relative;
+  padding-top: 22px;
+  padding-bottom: 110px;
+  box-sizing: border-box;
+
+  * {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 500px;
+    max-width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .error-page-img {
+    max-width: 100%;
+    margin-bottom: 56px;
+    left: -33px;
+  }
+
+  h1 {
+    font-family: MDLZ, sans-serif;
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 33px;
+    color: $color-choco-2;
+  }
+
+  p {
+    max-width: 370px;
+    margin: 0 auto 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-choco;
+  }
+
+  .error-page--link-to-main {
+
+    a {
+
+    }
+  }
+}

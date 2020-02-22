@@ -3,3 +3,5 @@ import '../img/common/ag-logo-small.png';
 import '../img/examples/fruit-01-raspberry.png';
 import '../img/examples/fruit-02-lemon.png';
 import '../img/examples/fruit-03-strawberry.png';
+import '../img/common/errors-404.png';
+import '../img/common/errors-500.png';

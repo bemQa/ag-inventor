@@ -1,9 +1,16 @@
-.main-page {
+body.main-page {
+
+  .header-bg--mobile-addition {
+    display: none;
+  }
+}
+
+.main-page-content {
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
   margin-top: -40px;
-  padding-bottom: 156px;
+  padding-bottom: 56px;
   z-index: 1;
 
   * {
@@ -104,7 +111,7 @@
 
 @media screen and (max-width: $adaptive-medium-top) {
 
-  .main-page {
+  .main-page-content {
 
     .container {
       padding-top: 440px;
@@ -131,7 +138,7 @@
 
 @media screen and (max-width: $adaptive-medium-middle) {
 
-  .main-page {
+  .main-page-content {
 
     .container {
       left: 0;
@@ -166,7 +173,14 @@
 
 @media screen and (max-width: $adaptive-mobile-top) {
 
-  .main-page {
+  body.main-page {
+
+    .header-bg--mobile-addition {
+      display: block;
+    }
+  }
+
+  .main-page-content {
     padding-bottom: 64px;
 
     .ag-logo {
@@ -225,7 +239,6 @@
         background-position: center;
         opacity: 1;
       }
-
     }
 
     .button {
@@ -240,7 +253,5 @@
     .main-page--cta-button {
       left: 0;
     }
-
   }
-
 }

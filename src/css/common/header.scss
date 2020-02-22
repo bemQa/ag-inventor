@@ -7,6 +7,31 @@
   z-index: -1;
 }
 
+.header-bg--mobile-addition {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  background-image: url("../img/common/menu-form.png");
+  background-position: top center;
+  background-size: auto 100%;
+
+  a {
+    display: block;
+    text-align: center;
+    width: 100%;
+
+    img {
+      margin: 0 auto;
+      top: 9px;
+    }
+  }
+}
+
 header {
   font-family: 'MDLZ', sans-serif;
   font-size: 14px;
@@ -17,10 +42,6 @@ header {
   * {
     position: relative;
     box-sizing: border-box;
-  }
-
-  .header-bg--mobile-addition {
-    display: none;
   }
 
   .container {
@@ -50,19 +71,28 @@ header {
         font-size: 18px;
       }
 
+      &.cabinet-link {
+        padding-left: 31px;
+        background-image: url("../img/common/cabinet-icon.svg");
+        background-position: 0 9px;
+
+        & ~ a {
+          margin-left: 23px;
+        }
+
+        &.active-link {
+          &::before {
+            left: 84px;
+            background-image: url("../img/common/arrow-down-polygon-white.svg");
+          }
+        }
+      }
+
       &.main-page-link {
         color: $color-orange;
 
         &.active-link {
           &::before {
-            content: '';
-            position: absolute;
-            display: block;
-            top: 0;
-            left: 24px;
-            width: 13px;
-            height: 12px;
-            background-repeat: no-repeat;
             background-image: url("../img/common/arrow-down-polygon.svg");
           }
         }
@@ -70,6 +100,19 @@ header {
 
       &.special-page-link {
         color: $color-yellow;
+      }
+
+      &.active-link {
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          top: 0;
+          left: 24px;
+          width: 13px;
+          height: 12px;
+          background-repeat: no-repeat;
+        }
       }
     }
 
@@ -110,31 +153,6 @@ header {
 @media screen and (max-width: $adaptive-mobile-top) {
 
   header {
-
-    .header-bg--mobile-addition {
-      display: block;
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 90px;
-      text-align: center;
-      background-image: url("../img/common/menu-form.png");
-      background-position: top center;
-      background-size: auto 100%;
-
-      a {
-        display: block;
-        text-align: center;
-        width: 100%;
-
-        img {
-          margin: 0 auto;
-          top: 9px;
-        }
-      }
-    }
 
     .desktop {
       display: none;

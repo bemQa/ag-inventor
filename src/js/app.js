@@ -1,15 +1,12 @@
 import "../css/entry.scss"
 import $ from 'jquery'
 import {initDevState} from "./dev";
-import '../img/common/mondelez.png';
-import '../img/main/mobile/ag-logo.png';
+import './images_import';
 
 $(document).ready(_ => {
   initDevState();
-
   setPageSizeTypes();
   stickFooter();
-
   bindListeners();
 });
 
@@ -28,6 +25,7 @@ function bindListeners() {
   });
 
   $('[data-popup]').on('click', e => {
+    e.preventDefault();
     showPopup($(e.target).attr('data-popup'));
   });
 
@@ -39,8 +37,6 @@ function bindListeners() {
   $('.popup-content').on('click', e => {
     e.stopPropagation();
   });
-
-  $('[data-popup="reg"]').click();
 
   $('#enter_form').on('submit', e => {
     e.preventDefault();
@@ -68,19 +64,15 @@ function setPageSizeTypes() {
 
 function stickFooter() {
 
-  let windowBodyHeightsDifference = window.innerHeight - $('body').innerHeight(),
+  let body = $('body'),
+      windowBodyHeightsDifference = window.innerHeight - body.innerHeight(),
       footer = $('footer');
-
-  if (window.isAdaptive) {
 
     if (windowBodyHeightsDifference > 0) {
       footer.css('top', `${windowBodyHeightsDifference - 12}px`);
     } else {
       footer.css('top', 0);
     }
-  } else {
-    footer.css('top', 0);
-  }
 }
 
 function showPopup(type) {

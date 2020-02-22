@@ -1,0 +1,271 @@
+.cabinet-page-content {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 57px;
+  padding-bottom: 42px;
+
+  * {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 670px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .cabinet--contacts-section {
+    text-align: center;
+    margin-bottom: 35px;
+    color: $color-choco-2;
+
+    .cabinet--name {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .cabinet--email {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      opacity: .5;
+    }
+
+    .cabinet--exit-btn {
+      font-size: 15px;
+      text-decoration: underline;
+    }
+  }
+
+  .user-collection--wrap {
+
+    .user-collection--section-title {
+      font-family: MDLZ, sans-serif;
+      font-size: 16px;
+      margin-bottom: 44px;
+      text-align: center;
+      color: $color-choco-2;
+    }
+
+    .user-collection--elements-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+      flex-wrap: wrap;
+
+      .user-collection--element {
+
+        &:nth-child(n + 4) {
+          margin-top: 40px;
+        }
+
+        .user-collection--element-body {
+          border-radius: 35px;
+          text-align: center;
+          color: white;
+          width: 206px;
+          height: 200px;
+
+          .user-collection--ag-logo {
+            position: absolute;
+            top: -28px;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background-image: url("../img/common/ag-logo-small.png");
+            background-position: top center;
+            background-size: auto 64px;
+          }
+
+          .user-collection--title {
+            position: absolute;
+            top: 42px;
+            width: 100%;
+            font-size: 24px;
+            font-family: MDLZ, sans-serif;
+
+            .user-collection--title-value {
+              margin: 0 auto;
+              width: 140px;
+              height: 87px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          .user-collection--parts {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            width: 100%;
+            padding: 0 12px;
+
+            .user-collection--part {
+              width: 52px;
+              height: 52px;
+              background-position: center;
+              background-size: cover;
+              margin: 0 12px;
+
+              &:first-child {
+                margin: 0;
+              }
+
+              &:last-child {
+                margin: 0;
+              }
+
+              &:nth-child(2):last-child {
+                margin-left: 12px;
+              }
+
+            }
+          }
+        }
+
+        .user-collection--element-btn-wrap {
+          margin-top: 6px;
+          font-size: 14px;
+          color: $color-choco-2;
+          text-align: center;
+
+          .user-collection--success-status {
+
+          }
+
+          .user-collection--editing-link {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .user-collection--creating-btn {
+        cursor: pointer;
+
+        &:nth-child(n + 4) {
+          margin-top: 40px;
+        }
+
+        .user-collection--element-body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px dotted $color-choco-2;
+          background-color: transparent;
+          border-radius: 35px;
+          width: 206px;
+          height: 200px;
+        }
+
+        .user-collection--white-circle-bg {
+          margin: auto;
+          background-color: white;
+          width: 76px;
+          height: 76px;
+          border-radius: 100px;
+          background-image: url("../img/common/plus-icon.svg");
+          background-position: center;
+          background-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $adaptive-mobile-top) {
+
+  .cabinet-page-content {
+    padding-top: 64px;
+    padding-bottom: 20px;
+
+    .container {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .cabinet--contacts-section {
+
+      .cabinet--name {
+
+      }
+
+      .cabinet--email {
+
+      }
+
+      .cabinet--exit-btn {
+
+      }
+
+    }
+
+    .user-collection--wrap {
+
+
+      .user-collection--section-title {
+        margin-bottom: 40px;
+      }
+
+      .user-collection--elements-list {
+        width: 206px;
+        margin: 0 auto;
+
+        .user-collection--element {
+
+          &:not(:first-child) {
+            margin-top: 40px;
+          }
+
+          .user-collection--element-body {
+
+            .user-collection--ag-logo {
+
+            }
+
+            .user-collection--title {
+
+            }
+
+            .user-collection--parts {
+
+              .user-collection--part {
+
+              }
+            }
+          }
+
+          .user-collection--element-btn-wrap {
+
+            .user-collection--success-status {
+              display: none;
+            }
+
+            .user-collection--editing-link {
+
+            }
+          }
+        }
+
+        .user-collection--creating-btn {
+
+          &:not(:first-child) {
+            margin-top: 20px;
+          }
+
+          .user-collection--element-body {
+
+          }
+
+          .user-collection--white-circle-bg {
+
+          }
+        }
+      }
+    }
+  }
+}

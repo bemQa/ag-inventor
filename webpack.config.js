@@ -16,7 +16,7 @@ module.exports = {
     hot: true
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name][hash].bundle.js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/'
   },
@@ -74,23 +74,33 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/html/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: './src/img/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/html/lk.html',
-      filename: './lk/index.html'
+      filename: './lk/index.html',
+      favicon: './src/img/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/html/faq.html',
-      filename: './faq/index.html'
+      filename: './faq/index.html',
+      favicon: './src/img/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/html/404.html',
-      filename: './404/index.html'
+      filename: './404/index.html',
+      favicon: './src/img/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/html/500.html',
-      filename: './500/index.html'
+      filename: './500/index.html',
+      favicon: './src/img/favicon.ico'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/html/build.html',
+      filename: './build/index.html',
+      favicon: './src/img/favicon.ico'
     }),
   ]
 };

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import {stickFooter} from './app'
+import productsJSON from './../demo/ingredients';
 
 export function BlockbusterBuilder() {
 
@@ -17,6 +18,7 @@ export function BlockbusterBuilder() {
   this.initState = function () {
     this.step = null;
     this.addingIsLocked = false;
+    this.setIngredients();
     this.isDemo =
         ~location.href.indexOf('localhost') ||
         ~location.href.indexOf('.world');
@@ -351,6 +353,11 @@ export function BlockbusterBuilder() {
     setTimeout(_ => {
       location.href = '/lk';
     }, 500);
+  };
+
+  this.setIngredients = function () {
+    this.categories = productsJSON.categories;
+    this.parts = productsJSON.ingredients;
   };
 }
 

@@ -1,0 +1,110 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Орехи"
+    },
+    {
+      "id": 2,
+      "title": "Фрукты"
+    },
+    {
+      "id": 3,
+      "title": "Специи"
+    },
+    {
+      "id": 4,
+      "title": "Печенья"
+    },
+    {
+      "id": 5,
+      "title": "Сладости"
+    },
+    {
+      "id": 6,
+      "title": "Шоколад"
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "construct-product-icon-01-strawberry.png",
+      "title": "Клубника",
+      "category_id": 2
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "construct-product-icon-02-raspberry.png",
+      "title": "Малина",
+      "category_id": 2
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "construct-product-icon-03-orange.png",
+      "title": "Апельсин",
+      "category_id": 2
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "Орехи 1",
+      "title": "",
+      "category_id": 1
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Специи 1",
+      "category_id": 3
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Печенья 1",
+      "category_id": 4
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Сладости 1",
+      "category_id": 5
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Молочный",
+      "category_id": 6
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Белый",
+      "category_id": 6
+    },
+    {
+      "id": 1,
+      "img": "",
+      "img_for_mix": "",
+      "thumb": "",
+      "title": "Тёмный",
+      "category_id": 6
+    }
+  ]
+}

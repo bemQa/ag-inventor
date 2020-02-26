@@ -1,4 +1,4 @@
-import "../css/entry.scss"
+// import "../css/entry.scss"
 import $ from 'jquery'
 import {initDevState} from "./dev";
 import './images_import';
@@ -231,4 +231,8 @@ function tryLoadScrollbarFor_FAQ() {
   }
 
   window.faqScrollbar = new PerfectScrollbar(faqContainer.toArray()[0]);
+}
+
+export {
+  stickFooter
 }

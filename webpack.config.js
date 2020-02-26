@@ -5,18 +5,21 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 function _path(p) {
   return path.join(__dirname, p);
 }
+
 module.exports = {
   mode: "development",
-  entry: {
-    app: './src/js/app.js'
-  },
+  entry: [
+    './src/js/app.js',
+    './src/css/entry.scss',
+    './src/css/build.scss',
+  ],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './public',
     hot: true
   },
   output: {
-    filename: '[name][hash].bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/'
   },
@@ -46,7 +49,15 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'css/[name].css',
+            }
+          },
+          {
+            loader: 'extract-loader'
+          },
           'css-loader',
           'sass-loader',
         ],

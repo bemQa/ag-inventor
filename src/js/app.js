@@ -1,10 +1,9 @@
-import "../css/entry.scss"
+// import "../css/entry.scss"
 import $ from 'jquery'
 import {initDevState} from "./dev";
 import './images_import';
 import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 import PerfectScrollbar from 'perfect-scrollbar';
-import {BlockbusterBuilder} from "./build";
 
 $(document).ready(_ => {
   initDevState();
@@ -12,9 +11,6 @@ $(document).ready(_ => {
   stickFooter();
   bindListeners();
   tryLoadScrollbarFor_FAQ();
-  if (~location.href.indexOf('/build')) {
-    window.blockbusterBuilder = new BlockbusterBuilder().init();
-  }
 });
 
 window.config = {

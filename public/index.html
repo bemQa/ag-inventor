@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AlpenGold</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/entry.css">
+</head>
+<body class="main-page">
+
+<div class="header-bg"></div>
+
+<header>
+  <div class="header-bg--mobile-addition">
+    <a href="/">
+      <img src="/img/common/ag-logo-small.png"
+           alt="Alpen Gold">
+    </a>
+  </div>
+
+  <div class="container">
+
+    <div class="desktop">
+      <div class="header-desktop-left">
+        <a href="/" class="main-page-link active-link">Главная</a>
+        <a href="/build" class="special-page-link">Создать вкус</a>
+        <a href="/rules">Правила</a>
+      </div>
+      <div class="header-desktop-right">
+        <a href="#" class="enter-link" data-popup="enter">Вход</a>
+        <a href="/faq" class="special-page-link">FAQ</a>
+      </div>
+    </div>
+
+    <div class="mobile">
+      <div class="header-mobile-left">
+        <div class="mobile-menu-btn">
+          Меню
+        </div>
+      </div>
+      <div class="header-mobile-left">
+        <div class="enter-mobile-button"
+             data-popup="enter">
+          Вход
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="page-content main-page-content">
+
+  <div class="ag-logo"></div>
+
+  <div class="main-page-composition"></div>
+
+  <div class="container">
+
+    <div class="main-page-blocks">
+
+      <div class="main-page-block main-page-block--1">
+        <div class="block-number">1</div>
+        <div class="block-text">
+          <span class="bigger-title-part">Выбирай</span>
+          <br>
+          <span>ингредиенты</span>
+        </div>
+      </div>
+
+      <div class="main-page-block main-page-block--2">
+        <div class="block-number">2</div>
+        <div class="block-text">
+          <span class="bigger-title-part">Придумай</span>
+          <br>
+          <span>название своему</span>
+          <br>
+          <span>вкусу</span>
+        </div>
+      </div>
+
+      <div class="main-page-block main-page-block--3">
+        <div class="block-number">3</div>
+        <div class="block-text">
+          <span class="bigger-title-part">Зарегистрируй</span>
+          <br>
+          <span>свой проект</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="main-page-blocks--button-wrap">
+      <div class="button-light"></div>
+      <a href="#"
+         class="button button--blue main-page--cta-button"
+         data-popup="reg">
+        Участвовать
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-links">
+      <a href="#" class="footer-link">
+        Политика конфиденциальности
+      </a>
+      <a href="#" class="footer-link">
+        Правила акции
+      </a>
+      <a href="#" class="footer-link">
+        Пользовательское соглашение
+      </a>
+    </div>
+
+    <img src="/img/common/mondelez.png"
+         class="footer-logo"
+         alt="Mondelez">
+
+    <div class="footer-copyright">
+      <span>ООО «Мон’дэлис Русь»</span>
+      <br>
+      Часть группы компаний Mondelez International. Все права защищены.
+    </div>
+
+
+  </div>
+</footer>
+
+<div class="popup"
+     style="opacity: 0">
+
+  <div class="popup-content popup-content--enter">
+    <div class="popup-close"></div>
+    <div class="popup-container">
+
+      <div class="popup-title">
+        Вход
+      </div>
+
+      <form id="enter_form">
+
+        <div class="input-group input-group--text">
+          <label for="enter_email">
+            E-mail
+          </label>
+          <input type="email"
+                 name="enter_email"
+                 id="enter_email"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text">
+          <label for="enter_password">
+            Пароль
+          </label>
+          <input type="password"
+                 name="enter_password"
+                 id="enter_password"
+                 required>
+        </div>
+
+        <button class="button button--blue popup--enter-submit-btn">
+          Вход
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="popup-content popup-content--service">
+    <div class="popup-close"></div>
+    <div class="popup-container">
+      <div class="popup-title service-msg-title"></div>
+      <p class="service-msg-body"></p>
+    </div>
+  </div>
+
+  <div class="popup-content popup-content--reg">
+    <div class="popup-close"></div>
+    <form id="reg_form">
+
+      <div class="popup-container">
+
+        <div class="popup-title">
+          Регистрация
+        </div>
+
+
+        <div class="input-group input-group--text">
+          <label for="reg_surname">
+            Фамилия
+          </label>
+          <input type="text"
+                 name="surname"
+                 id="reg_surname"
+                 value="Горностаев-Антонов"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text">
+          <label for="reg_name">
+            Имя
+          </label>
+          <input type="text"
+                 name="name"
+                 id="reg_name"
+                 value="Александр"
+                 required>
+        </div>
+
+        <div class="input-group input-group--text input-group--reg-email">
+          <label for="reg_email">
+            Email
+          </label>
+          <input type="email"
+                 name="email"
+                 id="reg_email"
+                 required>
+        </div>
+
+        <div class="input-group input-group--checkbox">
+          <input type="checkbox"
+                 name="sales_agreement"
+                 id="reg_sales_agreement"
+                 value="on">
+          <div class="pseudo-checkbox selected"></div>
+          <label for="reg_sales_agreement">
+            Я согласен с правилами акции
+          </label>
+        </div>
+
+        <div class="input-group input-group--checkbox">
+          <input type="checkbox"
+                 name="policy_agreement"
+                 id="reg_policy_agreement"
+                 value="on">
+          <div class="pseudo-checkbox selected"></div>
+          <label for="reg_policy_agreement">
+            Я согласен на обработку моих
+            <br>
+            персональных данных
+          </label>
+        </div>
+
+
+      </div>
+
+      <div class="reg-captcha">
+        <div class="captcha-title">
+          Введи символы с картинки
+        </div>
+        <div class="captcha-body">
+          <div class="captcha-code-img"></div>
+          <div class="captcha-form">
+            <input
+                type="text"
+                name="reg_captcha"
+                id="reg_captcha"
+                value="55763"
+                class="captcha-input">
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-container">
+        <button class="button button--blue popup--reg-submit-btn">
+          Зарегистрироваться
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<div class="template"></div>
+
+<div class="dev">
+  <button>Шаблон</button>
+</div>
+
+<script type="text/javascript" src="/main.js"></script>
+</body>
+</html>

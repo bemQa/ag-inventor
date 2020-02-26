@@ -11,8 +11,8 @@ export function BlockbusterBuilder() {
   this.init = function () {
     this.initState();
     this.bindPageElements();
+    this.listeners = this.bindListeners();
     this.load();
-    this.bindListeners();
   };
 
   this.initState = function () {
@@ -56,7 +56,8 @@ export function BlockbusterBuilder() {
         wrap: this.f('.build--slider-body'),
         categories: {
           wrap: this.f('.categories-select-wrap'),
-          categories: this.f('.categories-select'),
+          select: this.f('.categories-select'),
+          categories: this.f('.categories-option'),
         },
         main: {
           wrap: this.f('.build-body--main'),
@@ -64,6 +65,7 @@ export function BlockbusterBuilder() {
           content: {
             directionButtonsWrap: {
               wrap: this.f('.build-body--direction-buttons-wrap'),
+              both: this.f('.build-body--button-wrap'),
               left: {
                 wrap: this.f('.build-body--button-wrap--left'),
                 title: this.f('.build-body--button-wrap--left .build-button-title div'),
@@ -163,10 +165,35 @@ export function BlockbusterBuilder() {
       this.page.selectColorSlide.showMoreButton.hide();
       this.page.selectColorSlide.elements.show();
     });
+
+    this.page.sliderBody.main.content.directionButtonsWrap.both.on('click', e => {
+
+      let button = $(e.target).hasClass('build-body--button-wrap')
+          ? $(e.target)
+          : $(e.target).parents('.build-body--button-wrap');
+
+      switch (this.step) {
+        case 1:
+          this.fillProductsSlider(button.attr('data-product-code'));
+          break;
+
+        case 2:
+          this.fillChocolateSlider();
+      }
+    });
+
+    let categoriesSelect = () => {
+      this.page.sliderBody.categories.categories.off();
+      this.page.sliderBody.categories.categories.on('click', e => {
+        this.changeProductsCategory($(e.target));
+      });
+    };
+
+    return {categoriesSelect};
   };
 
   this.load = function () {
-    // Set step.
+
     {
       if (~location.href.indexOf('?step=4')) {
         this.step = 4;
@@ -377,7 +404,7 @@ export function BlockbusterBuilder() {
     this.loadByStep();
   };
 
-  this.fillProductsSlider = function () {
+  this.fillProductsSlider = function (productCode) {
 
     if (this.firstStepState.currentCategory === null) {
       this.firstStepState.currentCategory = 'Фрукты';
@@ -391,40 +418,96 @@ export function BlockbusterBuilder() {
       throw Error('Категория ингредиентов не может быть пустой');
     }
 
-    if (currentCategoryParts.length === 1) {
+    let productInCategoryIndex;
 
+    if (typeof productCode === 'undefined') {
+      productInCategoryIndex = 0;
       this.firstStepState.currentProduct = currentCategoryParts[0];
+    } else {
+      currentCategoryParts.forEach((part, index) => {
+        if (part.code === productCode) {
+          this.firstStepState.currentProduct = part;
+          productInCategoryIndex = index;
+        }
+      });
+    }
+
+    this.page.sliderBody.categories.select.html('');
+
+    this.categories.map(category => {
+
+      if (category === 'Шоколад') {
+        return null;
+      }
+
+      let selectedClass = category === this.firstStepState.currentCategory
+          ? 'categories-option--selected'
+          : '';
+
+      this.page.sliderBody.categories.select
+          .append(`<div class="categories-option ${selectedClass}">${category}</div>`);
+    });
+
+    this.bindPageElements();
+    this.listeners.categoriesSelect();
+
+    this.page.sliderBody.main.title.html(this.firstStepState.currentProduct.title);
+
+    this.page.sliderBody.main.content.scene.element.attr('style',
+        `background-image: url('${this.firstStepState.currentProduct.img.full}')`);
+
+    if (currentCategoryParts.length === 1) {
 
       this.page.sliderBody.main.content.directionButtonsWrap.left.wrap.hide();
       this.page.sliderBody.main.content.directionButtonsWrap.right.wrap.hide();
 
-      this.page.sliderBody.main.content.scene.element.attr('style',
-          `background-image: url('${this.firstStepState.currentProduct.img.full}')`);
-
     } else if (currentCategoryParts.length >= 2) {
 
-      this.firstStepState.currentProduct = currentCategoryParts[1];
+      let previousProductIndex = productInCategoryIndex === 0
+          ? currentCategoryParts.length - 1
+          : productInCategoryIndex - 1;
 
-      this.page.sliderBody.main.content.scene.element.attr('style',
-          `background-image: url('${this.firstStepState.currentProduct.img.full}')`);
+      let previousProduct = currentCategoryParts[previousProductIndex];
 
       this.page.sliderBody.main.content
-          .directionButtonsWrap.left.title.html(currentCategoryParts[0].title);
+          .directionButtonsWrap.left.title.html(previousProduct.title);
       this.page.sliderBody.main.content
           .directionButtonsWrap.left.image.attr('style',
-          `background-image: url('${currentCategoryParts[0].img.arrow}')`);
-      this.page.sliderBody.main.content.directionButtonsWrap.left.wrap.show();
+          `background-image: url('${previousProduct.img.arrow}')`);
 
-      if (currentCategoryParts.length > 2) {
+      this.page.sliderBody.main.content.directionButtonsWrap.left.wrap
+          .attr('data-product-code', previousProduct.code)
+          .show();
+
+      if (currentCategoryParts.length === 2) {
 
         this.page.sliderBody.main.content
-            .directionButtonsWrap.right.title.html(currentCategoryParts[2].title);
+            .directionButtonsWrap.right.title.html(previousProduct.title);
         this.page.sliderBody.main.content
             .directionButtonsWrap.right.image.attr('style',
-            `background-image: url('${currentCategoryParts[2].img.arrow}')`);
-        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap.show();
+            `background-image: url('${previousProduct.img.arrow}')`);
+
+        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
+            .attr('data-product-code', previousProduct.code)
+            .show();
+
       } else {
-        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap.hide();
+
+        let nextProductIndex = productInCategoryIndex === currentCategoryParts.length - 1
+            ? 0
+            : productInCategoryIndex + 1;
+
+        let nextProduct = currentCategoryParts[nextProductIndex];
+
+        this.page.sliderBody.main.content
+            .directionButtonsWrap.right.title.html(nextProduct.title);
+        this.page.sliderBody.main.content
+            .directionButtonsWrap.right.image.attr('style',
+            `background-image: url('${nextProduct.img.arrow}')`);
+
+        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
+            .attr('data-product-code', nextProduct.code)
+            .show();
       }
     }
   };
@@ -498,6 +581,21 @@ export function BlockbusterBuilder() {
 
     this.categories = categories;
     this.parts = products;
+  };
+
+  this.changeProductsCategory = function (category) {
+
+    let selectedCategoryClass = 'categories-option--selected';
+
+    if (category.hasClass(selectedCategoryClass)) {
+      return false;
+    }
+
+    this.page.sliderBody.categories.categories.removeClass(selectedCategoryClass);
+
+    category.addClass(selectedCategoryClass);
+    this.firstStepState.currentCategory = category.text();
+    this.fillProductsSlider();
   };
 }
 

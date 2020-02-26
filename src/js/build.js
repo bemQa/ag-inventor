@@ -13,6 +13,7 @@ export function BlockbusterBuilder() {
     this.bindPageElements();
     this.listeners = this.bindListeners();
     this.load();
+    return this;
   };
 
   this.initState = function () {
@@ -130,6 +131,7 @@ export function BlockbusterBuilder() {
           variant_1: this.f('[data-variant-number="1"]'),
           variant_2: this.f('[data-variant-number="2"]'),
           variant_3: this.f('[data-variant-number="3"]'),
+          variant_1_color: this.f('[data-variant-number="1"] div'),
         }
       },
       submitButton: this.f('.build-ui--submit-button')
@@ -145,7 +147,9 @@ export function BlockbusterBuilder() {
     this.page.floatUi.variants.all.on('click', e => {
       $(e.target)
           .removeClass('filled')
-          .attr('style', '');
+          .attr('style', '')
+          .find('div')
+          .hide();
     });
 
     this.page.floatUi.buttons.left.on('click', _ => {
@@ -166,6 +170,10 @@ export function BlockbusterBuilder() {
       this.page.selectColorSlide.elements.show();
     });
 
+    this.page.selectColorSlide.elements.on('click', e => {
+      this.selectChocoColor($(e.target));
+    });
+
     this.page.sliderBody.main.content.directionButtonsWrap.both.on('click', e => {
 
       let button = $(e.target).hasClass('build-body--button-wrap')
@@ -178,7 +186,7 @@ export function BlockbusterBuilder() {
           break;
 
         case 2:
-          this.fillChocolateSlider();
+          this.fillChocolateSlider(button.attr('data-product-code'));
       }
     });
 
@@ -224,20 +232,16 @@ export function BlockbusterBuilder() {
 
         this.fillProductsSlider();
 
-        // if (this.isDemo) {
-        //   this.page.sliderBody.main.title.html('Клубника');
-        //   this.page.sliderBody.main.content
-        //       .directionButtonsWrap.left.title.html('Апельсин');
-        //   this.page.sliderBody.main.content
-        //       .directionButtonsWrap.right.title.html('Малина');
-        // }
-
         this.page.sliderBody.categories.wrap.show();
         this.page.sliderBody.main.wrap.show();
         this.page.sliderBody.wrap.show();
 
         this.page.floatUi.buttons.left.hide();
         this.page.floatUi.buttons.right.show();
+
+        this.page.floatUi.variants.all
+            .removeClass('filled')
+            .attr('style', '');
 
         this.page.floatUi.variants.variant_1.show();
         this.page.floatUi.variants.variant_2.show();
@@ -365,25 +369,56 @@ export function BlockbusterBuilder() {
 
     if (ingredientsWithThisProduct.length ||
         this.addingIsLocked === true) {
-      return true;
+      return null;
+    }
+
+    let availableCellsLength = this.page.floatUi.variants.all
+        .filter((index, variant) => {
+          return !$(variant).hasClass('filled') &&
+              $(variant).is(':visible');
+        })
+        .toArray().length;
+
+    if (availableCellsLength === 0) {
+      return null;
     }
 
     this.addingIsLocked = true;
     this.page.sliderBody.main.content.scene.element.addClass('in-cart');
 
-    $(this.page.floatUi.variants.all
-        .filter((index, variant) => !$(variant).hasClass('filled'))
-        .toArray()[0]
-    )
-        .addClass('filled')
-        .attr(
-            'style',
-            `background-image: url('${this.firstStepState.currentProduct.img.inCart}')`);
+    if (this.step === 1) {
+
+      this.addingIsLocked = true;
+      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
+
+      $(this.page.floatUi.variants.all
+          .filter((index, variant) => !$(variant).hasClass('filled'))
+          .toArray()[0]
+      )
+          .addClass('filled')
+          .attr(
+              'style',
+              `background-image: url('${this.firstStepState.currentProduct.img.inCart}')`);
+
+    } else {
+
+      $(this.page.floatUi.variants.all
+          .filter((index, variant) => {
+            return !$(variant).hasClass('filled') &&
+                $(variant).is(':visible');
+          })
+          .toArray()[0]
+      )
+          .addClass('filled')
+          .attr(
+              'style',
+              `background-image: url('${this.currentChocolate.img.inCart}')`);
+    }
 
     setTimeout(_ => {
       this.addingIsLocked = false;
       this.page.sliderBody.main.content.scene.element.removeClass('in-cart');
-    }, 2000);
+    }, 3000);
   };
 
   this.stepBackward = function () {
@@ -406,62 +441,158 @@ export function BlockbusterBuilder() {
 
   this.fillProductsSlider = function (productCode) {
 
-    if (this.firstStepState.currentCategory === null) {
-      this.firstStepState.currentCategory = 'Фрукты';
-    }
+    this.page.sliderBody.main.wrap.removeClass('step-2');
 
-    let currentCategoryParts = this.parts.filter(part => {
-      return part.category === this.firstStepState.currentCategory;
-    });
+    this.page.sliderBody.main.wrap.animate({opacity: 0}, 300);
 
-    if (currentCategoryParts.length === 0) {
-      throw Error('Категория ингредиентов не может быть пустой');
-    }
+    setTimeout(_ => {
 
-    let productInCategoryIndex;
-
-    if (typeof productCode === 'undefined') {
-      productInCategoryIndex = 0;
-      this.firstStepState.currentProduct = currentCategoryParts[0];
-    } else {
-      currentCategoryParts.forEach((part, index) => {
-        if (part.code === productCode) {
-          this.firstStepState.currentProduct = part;
-          productInCategoryIndex = index;
-        }
-      });
-    }
-
-    this.page.sliderBody.categories.select.html('');
-
-    this.categories.map(category => {
-
-      if (category === 'Шоколад') {
-        return null;
+      if (this.firstStepState.currentCategory === null) {
+        this.categories.map(category => {
+          if (~category.indexOf('рукты')) {
+            this.firstStepState.currentCategory = category;
+          }
+        });
       }
 
-      let selectedClass = category === this.firstStepState.currentCategory
-          ? 'categories-option--selected'
-          : '';
+      let currentCategoryParts = this.parts.filter(part => {
+        return part.category === this.firstStepState.currentCategory;
+      });
 
-      this.page.sliderBody.categories.select
-          .append(`<div class="categories-option ${selectedClass}">${category}</div>`);
-    });
+      if (currentCategoryParts.length === 0) {
+        throw Error('Категория ингредиентов не может быть пустой');
+      }
 
-    this.bindPageElements();
-    this.listeners.categoriesSelect();
+      let productInCategoryIndex;
 
-    this.page.sliderBody.main.title.html(this.firstStepState.currentProduct.title);
+      if (typeof productCode === 'undefined') {
+        productInCategoryIndex = 0;
+        this.firstStepState.currentProduct = currentCategoryParts[0];
+      } else {
+        currentCategoryParts.forEach((part, index) => {
+          if (part.code === productCode) {
+            this.firstStepState.currentProduct = part;
+            productInCategoryIndex = index;
+          }
+        });
+      }
 
-    this.page.sliderBody.main.content.scene.element.attr('style',
-        `background-image: url('${this.firstStepState.currentProduct.img.full}')`);
+      this.page.sliderBody.categories.select.html('');
 
-    if (currentCategoryParts.length === 1) {
+      this.categories.map(category => {
 
-      this.page.sliderBody.main.content.directionButtonsWrap.left.wrap.hide();
-      this.page.sliderBody.main.content.directionButtonsWrap.right.wrap.hide();
+        if (category === 'Шоколад') {
+          return null;
+        }
 
-    } else if (currentCategoryParts.length >= 2) {
+        let selectedClass = category === this.firstStepState.currentCategory
+            ? 'categories-option--selected'
+            : '';
+
+        this.page.sliderBody.categories.select
+            .append(`<div class="categories-option ${selectedClass}">${category}</div>`);
+      });
+
+      this.bindPageElements();
+      this.listeners.categoriesSelect();
+
+      this.page.sliderBody.main.title.html(this.firstStepState.currentProduct.title);
+
+      this.page.sliderBody.main.content.scene.element.attr('style',
+          `background-image: url('${this.firstStepState.currentProduct.img.full}')`);
+
+      if (currentCategoryParts.length === 1) {
+
+        this.page.sliderBody.main.content.directionButtonsWrap.left.wrap.hide();
+        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap.hide();
+
+      } else if (currentCategoryParts.length >= 2) {
+
+        let previousProductIndex = productInCategoryIndex === 0
+            ? currentCategoryParts.length - 1
+            : productInCategoryIndex - 1;
+
+        let previousProduct = currentCategoryParts[previousProductIndex];
+
+        this.page.sliderBody.main.content
+            .directionButtonsWrap.left.title.html(previousProduct.title);
+        this.page.sliderBody.main.content
+            .directionButtonsWrap.left.image.attr('style',
+            `background-image: url('${previousProduct.img.arrow}')`);
+
+        this.page.sliderBody.main.content.directionButtonsWrap.left.wrap
+            .attr('data-product-code', previousProduct.code)
+            .show();
+
+        if (currentCategoryParts.length === 2) {
+
+          this.page.sliderBody.main.content
+              .directionButtonsWrap.right.title.html(previousProduct.title);
+          this.page.sliderBody.main.content
+              .directionButtonsWrap.right.image.attr('style',
+              `background-image: url('${previousProduct.img.arrow}')`);
+
+          this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
+              .attr('data-product-code', previousProduct.code)
+              .show();
+
+        } else {
+
+          let nextProductIndex = productInCategoryIndex === currentCategoryParts.length - 1
+              ? 0
+              : productInCategoryIndex + 1;
+
+          let nextProduct = currentCategoryParts[nextProductIndex];
+
+          this.page.sliderBody.main.content
+              .directionButtonsWrap.right.title.html(nextProduct.title);
+          this.page.sliderBody.main.content
+              .directionButtonsWrap.right.image.attr('style',
+              `background-image: url('${nextProduct.img.arrow}')`);
+
+          this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
+              .attr('data-product-code', nextProduct.code)
+              .show();
+        }
+      }
+
+      this.page.sliderBody.main.wrap.animate({opacity: 1}, 300);
+
+    }, 300);
+  };
+
+  this.fillChocolateSlider = function (productCode) {
+
+    this.page.sliderBody.main.wrap.addClass('step-2');
+
+    this.page.sliderBody.main.wrap.animate({opacity: 0}, 300);
+
+    setTimeout(_ => {
+
+      let currentCategoryParts = this.parts.filter(part => {
+        return part.category === 'Шоколад';
+      });
+
+      let productInCategoryIndex;
+
+      this.currentChocolate = null;
+
+      if (typeof productCode === 'undefined') {
+        productInCategoryIndex = 0;
+        this.currentChocolate = currentCategoryParts[0];
+      } else {
+        currentCategoryParts.forEach((part, index) => {
+          if (part.code === productCode) {
+            this.currentChocolate = part;
+            productInCategoryIndex = index;
+          }
+        });
+      }
+
+      this.page.sliderBody.main.title.html(this.currentChocolate.title);
+
+      this.page.sliderBody.main.content.scene.element.attr('style',
+          `background-image: url('${this.currentChocolate.img.full}')`);
 
       let previousProductIndex = productInCategoryIndex === 0
           ? currentCategoryParts.length - 1
@@ -479,41 +610,25 @@ export function BlockbusterBuilder() {
           .attr('data-product-code', previousProduct.code)
           .show();
 
-      if (currentCategoryParts.length === 2) {
+      let nextProductIndex = productInCategoryIndex === currentCategoryParts.length - 1
+          ? 0
+          : productInCategoryIndex + 1;
 
-        this.page.sliderBody.main.content
-            .directionButtonsWrap.right.title.html(previousProduct.title);
-        this.page.sliderBody.main.content
-            .directionButtonsWrap.right.image.attr('style',
-            `background-image: url('${previousProduct.img.arrow}')`);
+      let nextProduct = currentCategoryParts[nextProductIndex];
 
-        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
-            .attr('data-product-code', previousProduct.code)
-            .show();
+      this.page.sliderBody.main.content
+          .directionButtonsWrap.right.title.html(nextProduct.title);
+      this.page.sliderBody.main.content
+          .directionButtonsWrap.right.image.attr('style',
+          `background-image: url('${nextProduct.img.arrow}')`);
 
-      } else {
+      this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
+          .attr('data-product-code', nextProduct.code)
+          .show();
 
-        let nextProductIndex = productInCategoryIndex === currentCategoryParts.length - 1
-            ? 0
-            : productInCategoryIndex + 1;
+      this.page.sliderBody.main.wrap.animate({opacity: 1}, 300);
 
-        let nextProduct = currentCategoryParts[nextProductIndex];
-
-        this.page.sliderBody.main.content
-            .directionButtonsWrap.right.title.html(nextProduct.title);
-        this.page.sliderBody.main.content
-            .directionButtonsWrap.right.image.attr('style',
-            `background-image: url('${nextProduct.img.arrow}')`);
-
-        this.page.sliderBody.main.content.directionButtonsWrap.right.wrap
-            .attr('data-product-code', nextProduct.code)
-            .show();
-      }
-    }
-  };
-
-  this.fillChocolateSlider = function () {
-
+    }, 300);
   };
 
   this.submitBuild = function () {
@@ -596,6 +711,16 @@ export function BlockbusterBuilder() {
     category.addClass(selectedCategoryClass);
     this.firstStepState.currentCategory = category.text();
     this.fillProductsSlider();
+  };
+
+  this.selectChocoColor = function (colorBlock) {
+
+    this.page.floatExampleResult.wrap.attr('style',
+        `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
+
+    this.page.floatUi.variants.variant_1_color
+        .attr('style', colorBlock.attr('style'))
+        .show();
   };
 }
 

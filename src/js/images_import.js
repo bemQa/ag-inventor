@@ -7,6 +7,8 @@ import '../img/common/arrow-down-polygon.svg';
 import '../img/common/bg.jpg';
 import '../img/common/bg-2.jpg';
 import '../img/common/build-choco-result.png';
+import '../img/common/build-choco-result-pink.png';
+import '../img/common/build-choco-result-green.png';
 import '../img/common/burger.svg';
 import '../img/common/cabinet-icon.svg';
 import '../img/common/captcha-bg-arrow.svg';
@@ -51,5 +53,12 @@ import '../img/examples/sweets-3.png';
 import '../img/examples/cookies-1.png';
 import '../img/examples/cookies-2.png';
 import '../img/examples/cookies-3.png';
+
+import '../img/examples/choco-1.png';
+import '../img/examples/choco-2.png';
+import '../img/examples/choco-3.png';
+import '../img/examples/choco-1-small.png';
+import '../img/examples/choco-2-small.png';
+import '../img/examples/choco-3-small.png';
 
 

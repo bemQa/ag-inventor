@@ -4,6 +4,7 @@ import {initDevState} from "./dev";
 import './images_import';
 import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 import PerfectScrollbar from 'perfect-scrollbar';
+import {BlockbusterBuilder} from "./build";
 
 $(document).ready(_ => {
   initDevState();
@@ -11,6 +12,9 @@ $(document).ready(_ => {
   stickFooter();
   bindListeners();
   tryLoadScrollbarFor_FAQ();
+  if (~location.href.indexOf('/build')) {
+    window.blockbusterBuilder = new BlockbusterBuilder().init();
+  }
 });
 
 window.config = {
@@ -27,11 +31,6 @@ function bindListeners() {
     stickFooter();
   });
 
-  $('[data-popup]').on('click', e => {
-    e.preventDefault();
-    showPopup($(e.target).attr('data-popup'));
-  });
-
   $('.popup, .popup-close').on('click', e => {
     $('.popup').removeClass('active');
     $('body').removeClass('no-scroll');
@@ -39,16 +38,6 @@ function bindListeners() {
 
   $('.popup-content').on('click', e => {
     e.stopPropagation();
-  });
-
-  $('#enter_form').on('submit', e => {
-    e.preventDefault();
-    submitEnterForm($(e.target));
-  });
-
-  $('#reg_form').on('submit', e => {
-    e.preventDefault();
-    submitRegForm($(e.target));
   });
 
   $('.pseudo-checkbox').on('click', e => {
@@ -85,11 +74,11 @@ function stickFooter() {
   }
 }
 
-function showPopup(type) {
+window.showPopup = function (type) {
   $('body').addClass('no-scroll');
   $('.popup-content.active').removeClass('active');
   $(`.popup, .popup-content--${type}`).addClass('active');
-}
+};
 
 function showServiceMessage(message) {
   $('body').addClass('no-scroll');
@@ -111,100 +100,6 @@ function showServiceMessage(message) {
   }
 
   $(`.popup, .popup-content--service`).addClass('active');
-}
-
-function submitEnterForm(form) {
-
-  let formData = {
-    email: form.find('[name="enter_email"]').val(),
-    password: form.find('[name="enter_password"]').val()
-  };
-
-  $('.popup--enter-submit-btn').prop('disabled', true);
-
-  $.ajax({
-    url: window.config.url.enter,
-    data: formData,
-    method: 'get',
-    success: data => {
-      if (typeof data.status !== 'undefined' &&
-          data.status === 'success'
-      ) {
-
-        let message = typeof data.message !== 'undefined'
-            ? data.message
-            : 'Добро пожаловать!';
-
-        showServiceMessage({
-          title: 'Вход',
-          body: message
-        });
-      } else {
-        showEnterError();
-      }
-    },
-    error: _ => {
-      showEnterError();
-    }
-  });
-
-  let showEnterError = function () {
-    showServiceMessage({
-      title: 'Вход временно недоступен',
-      body: 'Ведутся технические работы.',
-    });
-  }
-}
-
-function submitRegForm(form) {
-
-  let formData = {
-    email: form.find('[name="reg_email"]').val(),
-    name: form.find('[name="name"]').val(),
-    surname: form.find('[name="surname"]').val(),
-    sales_agreement: form.find('[name="sales_agreement"]').val(),
-    policy_agreement: form.find('[name="policy_agreement"]').val(),
-  };
-
-  if (formData.sales_agreement === 'off' ||
-      formData.policy_agreement === 'off') {
-    return showServiceMessage('Для продолжения вы должны согласиться с условиями регистрации');
-  }
-
-  $('.popup--reg-submit-btn').prop('disabled', true);
-
-  $.ajax({
-    url: window.config.url.reg,
-    data: formData,
-    method: 'get',
-    success: data => {
-      if (typeof data.status !== 'undefined' &&
-          data.status === 'success'
-      ) {
-
-        let message = typeof data.message !== 'undefined'
-            ? data.message
-            : 'Вы успешно зарегистрированы';
-
-        showServiceMessage({
-          title: 'Регистрация',
-          body: message
-        });
-      } else {
-        showRegError();
-      }
-    },
-    error: _ => {
-      showRegError();
-    }
-  });
-
-  let showRegError = function () {
-    showServiceMessage({
-      title: 'Регистрация временно недоступна',
-      body: 'Ведутся технические работы.',
-    });
-  }
 }
 
 function togglePseudoCheckbox(pseudoCheckbox) {

@@ -136,6 +136,40 @@
 <div class="popup"
      style="opacity: 0">
 
+  <div class="popup-content popup-content--forget">
+    <div class="popup-close"></div>
+    <div class="popup-container">
+
+      <div class="popup-title">
+        Восстановление пароля
+      </div>
+
+      <form id="forget-form">
+
+        <div class="input-group input-group--text">
+          <label for="enter_email">
+            E-mail
+          </label>
+          <input type="email"
+                 name="forget-form_email"
+                 id="forget-form_email"
+                 required>
+        </div>
+
+        <p class="form-description">
+          Введи e-mail, указанный при регистрации.
+          Мы вышлем туда ссылку для смены пароля.
+        </p>
+
+        <button class="button button--blue popup--forget-submit-btn">
+          Получить письмо
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
   <div class="popup-content popup-content--enter">
     <div class="popup-close"></div>
     <div class="popup-container">
@@ -258,7 +292,9 @@
           Введи символы с картинки
         </div>
         <div class="captcha-body">
-          <div class="captcha-code-img"></div>
+          <div class="captcha-code-img">
+            <img src="../img/common/captcha-dummy.jpg" alt="">
+          </div>
           <div class="captcha-form">
             <input
                 type="text"

@@ -191,8 +191,14 @@
           .captcha-code-img {
             height: 38px;
             width: 100px;
-            background-image: url("../img/common/captcha-dummy.jpg");
             background-size: 100% auto;
+            display: flex;
+            object-fit: contain;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
 
           .captcha-form {

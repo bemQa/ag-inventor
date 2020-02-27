@@ -22,6 +22,12 @@
     transform: scale(.01);
   }
 
+  25% {
+    top: 0;
+    opacity: 0;
+    transform: scale(.01);
+  }
+
   50% {
     top: 0;
     transform: scale(1);
@@ -44,7 +50,7 @@
     transform: scale(.8);
   }
 
-  87% {
+  90% {
     top: 0;
     opacity: 0;
   }
@@ -598,6 +604,14 @@
         background-position: center;
         cursor: pointer;
 
+        &.disabled {
+          color: rgba(255, 255, 255, .6);
+
+          &:after {
+            opacity: .6;
+          }
+        }
+
         &:hover {
           background-color: $color-primary-btn-hover;
         }
@@ -703,4 +717,52 @@
       }
     }
   }
+}
+
+.form-description {
+  font-size: 11px;
+  text-align: center;
+  padding: 7px 18px;
+  margin-bottom: 20px;
+}
+
+.popup--forget-submit-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 18px;
+}
+
+.choco-animation {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  top: 16px;
+  left: -11px;
+  height: 443px;
+  width: 100%;
+  background-image: url("../img/common/choco-animation.png");
+  background-size: 195px auto;
+  background-position: bottom center;
+}
+
+.venchik-img {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  width: 50%;
+  height: 440px;
+  top: 0;
+  left: 50%;
+  background-size: 291px auto;
+  background-position: left 34px bottom;
+  background-image: url("../img/common/venchik-for-animation.png");
+  z-index: 3;
+}
+
+@media screen and (max-width: 400px) {
+
+  header .mobile .header-mobile-left {
+    font-size: 12px;
+  }
+
 }

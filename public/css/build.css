@@ -156,6 +156,14 @@ button {
     background-size: auto 100%;
   }
 }
+.link-to-forget-popup {
+  text-align: center;
+  display: block;
+  text-decoration: underline;
+  font-size: 11.5px;
+  margin: 18px auto 2px;
+}
+
 .popup {
   position: fixed;
   left: 0;
@@ -1956,11 +1964,4 @@ footer .footer-copyright span {
   .build-content .build--slider-body .categories-select-wrap .categories-select .categories-option {
     font-size: 10px;
   }
-}
-.link-to-forget-popup {
-  text-align: center;
-  display: block;
-  text-decoration: underline;
-  font-size: 11.5px;
-  margin: 18px auto 2px;
 }

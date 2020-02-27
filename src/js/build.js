@@ -455,9 +455,6 @@ export function BlockbusterBuilder() {
 
     if (this.step === 1) {
 
-      this.addingIsLocked = true;
-      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
-
       let ingredientsWithThisProduct = this.page.floatUi.variants.all
           .filter((index, variant) => {
             return $(variant).attr('style') ===
@@ -467,6 +464,9 @@ export function BlockbusterBuilder() {
       if (ingredientsWithThisProduct.length) {
         return null;
       }
+
+      this.addingIsLocked = true;
+      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
 
       setTimeout(_ => {
         this.page.sliderBody.main.content.scene.element.attr('style',
@@ -491,9 +491,6 @@ export function BlockbusterBuilder() {
 
     } else {
 
-      this.addingIsLocked = true;
-      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
-
       setTimeout(_ => {
         this.page.sliderBody.main.content.scene.element.attr('style',
             `background-image: url('${this.currentChocolate.img.forAddNewAnimation}')`);
@@ -515,6 +512,9 @@ export function BlockbusterBuilder() {
           .attr(
               'style',
               `background-image: url('${this.currentChocolate.img.inCart}')`);
+
+      this.addingIsLocked = true;
+      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
 
       this.result.choco = this.currentChocolate.code;
     }

@@ -110,11 +110,10 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/img/templates/step-4-desktop.png);
+  background-image: url(/img/templates/step-4-mobile.png);
   background-position: center top;
   opacity: 0.6;
   min-height: 1000px;
-  display: none;
 }
 
 .dev {
@@ -313,8 +312,13 @@ button {
 .popup .popup-content.popup-content--reg .reg-captcha .captcha-body .captcha-code-img {
   height: 38px;
   width: 100px;
-  background-image: url(/img/common/captcha-dummy.jpg);
   background-size: 100% auto;
+  display: flex;
+  object-fit: contain;
+}
+.popup .popup-content.popup-content--reg .reg-captcha .captcha-body .captcha-code-img img {
+  width: 100%;
+  height: 100%;
 }
 .popup .popup-content.popup-content--reg .reg-captcha .captcha-body .captcha-form .captcha-input {
   width: 100px;

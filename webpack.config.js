@@ -49,16 +49,16 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // {
-          //   loader: 'file-loader',
-          //   options: {
-          //     name: 'css/[name].css',
-          //   }
-          // },
-          // {
-          //   loader: 'extract-loader'
-          // },
-          'style-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'css/[name].css',
+            }
+          },
+          {
+            loader: 'extract-loader'
+          },
+          // 'style-loader',
           'css-loader',
           'sass-loader',
         ],

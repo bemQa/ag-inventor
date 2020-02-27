@@ -395,9 +395,7 @@ export function BlockbusterBuilder() {
         this.page.finalSlide.wrap.show();
         this.page.floatExampleResult.wrap.show();
 
-        this.page.floatUi.buttons.left
-            .addClass('disabled')
-            .show();
+        this.page.floatUi.buttons.left.show();
         this.page.floatUi.buttons.right
             .addClass('disabled')
             .hide();
@@ -434,19 +432,13 @@ export function BlockbusterBuilder() {
 
     this.page.floatUi.wrap.show();
 
+    this.fillFromState();
     stickFooter();
   };
 
   this.addCurrentProductToBuild = function () {
 
-    let ingredientsWithThisProduct = this.page.floatUi.variants.all
-        .filter((index, variant) => {
-          return $(variant).attr('style') ===
-              `background-image: url('${this.firstStepState.currentProduct.img.inCart}')`
-        });
-
-    if (ingredientsWithThisProduct.length ||
-        this.addingIsLocked === true) {
+    if (this.addingIsLocked === true) {
       return null;
     }
 
@@ -461,10 +453,20 @@ export function BlockbusterBuilder() {
       return null;
     }
 
-    this.addingIsLocked = true;
-    this.page.sliderBody.main.content.scene.element.addClass('in-cart');
-
     if (this.step === 1) {
+
+      this.addingIsLocked = true;
+      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
+
+      let ingredientsWithThisProduct = this.page.floatUi.variants.all
+          .filter((index, variant) => {
+            return $(variant).attr('style') ===
+                `background-image: url('${this.firstStepState.currentProduct.img.inCart}')`
+          });
+
+      if (ingredientsWithThisProduct.length) {
+        return null;
+      }
 
       setTimeout(_ => {
         this.page.sliderBody.main.content.scene.element.attr('style',
@@ -488,6 +490,9 @@ export function BlockbusterBuilder() {
               `background-image: url('${this.firstStepState.currentProduct.img.inCart}')`);
 
     } else {
+
+      this.addingIsLocked = true;
+      this.page.sliderBody.main.content.scene.element.addClass('in-cart');
 
       setTimeout(_ => {
         this.page.sliderBody.main.content.scene.element.attr('style',
@@ -540,42 +545,51 @@ export function BlockbusterBuilder() {
 
       case 2:
 
-        this.addingIsLocked = true;
+        if (window.innerWidth > 780) {
 
-        this.page.sliderBody.main.wrap.hide();
-        this.page.floatUi.variants.wrap.hide();
+          this.addingIsLocked = true;
 
-        this.page.chocoAnimation.choco.css({display: 'block'});
-        this.page.chocoAnimation.venchik.css({display: 'block'});
+          this.page.sliderBody.main.wrap.hide();
+          this.page.floatUi.wrap.hide();
 
-        this.page.chocoAnimation.choco.animate({
-          opacity: 1
-        }, 200);
+          this.page.chocoAnimation.choco.css({display: 'block'});
+          this.page.chocoAnimation.venchik.css({display: 'block'});
 
-        this.page.chocoAnimation.venchik.animate({
-          opacity: 1
-        }, 200);
-
-        setTimeout(_ => {
           this.page.chocoAnimation.choco.animate({
-            opacity: 0
-          }, 300);
+            opacity: 1
+          }, 200);
 
           this.page.chocoAnimation.venchik.animate({
-            opacity: 0
-          }, 300);
-        }, 1680);
+            opacity: 1
+          }, 200);
 
-        setTimeout(_ => {
-          this.page.chocoAnimation.choco.hide();
-          this.page.chocoAnimation.venchik.hide();
-        }, 1980);
+          setTimeout(_ => {
+            this.page.chocoAnimation.choco.animate({
+              opacity: 0
+            }, 300);
 
-        setTimeout(_ => {
-          this.addingIsLocked = false;
+            this.page.chocoAnimation.venchik.animate({
+              opacity: 0
+            }, 300);
+          }, 1680);
+
+          setTimeout(_ => {
+            this.page.chocoAnimation.choco.hide();
+            this.page.chocoAnimation.venchik.hide();
+          }, 1980);
+
+          setTimeout(_ => {
+            this.addingIsLocked = false;
+            this.step++;
+            this.loadByStep();
+          }, 2000);
+
+        } else {
+
           this.step++;
           this.loadByStep();
-        }, 2000);
+        }
+
         break;
 
       default:
@@ -812,6 +826,7 @@ export function BlockbusterBuilder() {
         category: element.data('productCategory'),
         img: {
           full: element.data('productImgFull'),
+          float: element.data('productImgFloat'),
           forAddNewAnimation: element.data('productImgForAddAnimation'),
           arrow: element.data('productImgArrow'),
           inCart: element.data('productImgInCart'),
@@ -914,10 +929,10 @@ export function BlockbusterBuilder() {
         if (this.result.choco === null) {
           return null;
         }
-          const thisChoco = this.parts.filter(part => part.code === this.result.choco)[0];
-          this.page.floatUi.variants.variant_1
-              .addClass('filled')
-              .attr('style', `background-image: url('${thisChoco.img.inCart}')`);
+        const thisChoco = this.parts.filter(part => part.code === this.result.choco)[0];
+        this.page.floatUi.variants.variant_1
+            .addClass('filled')
+            .attr('style', `background-image: url('${thisChoco.img.inCart}')`);
         this.page.floatUi.buttons.right.removeClass('disabled');
         break;
 
@@ -935,6 +950,7 @@ export function BlockbusterBuilder() {
             `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
 
         this.page.floatUi.buttons.right.removeClass('disabled');
+
         break;
 
       case 4:
@@ -945,6 +961,42 @@ export function BlockbusterBuilder() {
           this.page.finalSlide.form.inputs.description.val(this.result.description);
         }
     }
+
+    if (this.step === 3 ||
+        this.step === 4) {
+
+      this.page.floatExampleResult.images.all.hide();
+
+      this.result.parts.map((partCode, index) => {
+
+        let part = this.parts.filter(filteringPart => filteringPart.code === partCode)[0];
+
+        let order = index + 1;
+
+        switch (order) {
+          case 1:
+            this.page.floatExampleResult.images.image_1.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+            this.page.floatExampleResult.images.image_4.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+            break;
+
+          case 2:
+            this.page.floatExampleResult.images.image_2.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+            this.page.floatExampleResult.images.image_5.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+            break;
+
+          case 3:
+            this.page.floatExampleResult.images.image_3.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+            this.page.floatExampleResult.images.image_6.attr('style',
+                `background-image: url('${part.img.float}')`).show();
+        }
+      });
+    }
+
   };
 
   this.showFloatingParts = function () {

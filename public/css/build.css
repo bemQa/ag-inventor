@@ -992,7 +992,7 @@ body.faq-page {
   display: block;
   position: absolute;
   z-index: -1;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 230px;
   margin-right: calc(50% - 115px);

@@ -569,6 +569,7 @@ body.main-page .header-bg--mobile-addition {
 
   .main-page-content .main-page-composition {
     height: 450px;
+    left: calc(-50% - 42px);
   }
 }
 .cabinet-page-content {

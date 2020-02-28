@@ -2,7 +2,7 @@ import $ from "jquery";
 
 export function initDevState() {
 
-  if (!~location.href.indexOf('localhost')) {
+  if (!~location.href.indexOf('8080')) {
     return null;
   }
 

@@ -12,7 +12,7 @@ $(document).ready(_ => {
   stickFooter();
   bindListeners();
   tryLoadScrollbarFor_FAQ();
-  if (~location.href.indexOf('/build')) {
+  if ($('.build-content').length) {
     window.blockbusterBuilder = new BlockbusterBuilder().init();
   }
 });

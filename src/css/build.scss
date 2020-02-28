@@ -351,6 +351,7 @@
     width: 180px;
     top: 94px;
     text-align: center;
+    z-index: 4;
 
     .colors-title {
       font-size: 12px;
@@ -528,7 +529,7 @@
     right: 0;
     width: 300px;
     height: 500px;
-    background-image: url("../img/common/build-choco-result.png");
+    background-image: url("../img/choco-results/Chokolate_white.png");
     background-size: 284px 456px;
     background-position: -43px -34px;
     z-index: 2;
@@ -766,6 +767,35 @@
   background-position: left 34px bottom;
   background-image: url("../img/common/venchik-for-animation.png");
   z-index: 3;
+}
+
+.result-chocolate--text-wrap {
+  text-align: center;
+  color: black;
+  position: absolute;
+  top: 274px;
+  left: -14px;
+  width: 175px;
+  transform: rotate(7deg) scaleX(0.9) skew(1deg, 1deg);
+
+  .x-title {
+    max-width: 139px;
+    min-height: 43px;
+    max-height: 43px;
+    margin: 0 auto 4px;
+    line-height: 18px;
+    font-weight: 600;
+    font-size: 17px;
+    overflow: hidden;
+  }
+
+  .x-choco-type {
+    max-width: 90px;
+    margin: 0 auto;
+    line-height: 14px;
+    font-size: 13px;
+    left: -1px;
+  }
 }
 
 @media screen and (max-width: 400px) {

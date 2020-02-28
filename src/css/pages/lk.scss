@@ -69,6 +69,19 @@
           width: 206px;
           height: 200px;
 
+          &.dark-choco-bg {
+            background-color: #582B0B
+          }
+
+          &.milk-choco-bg {
+            background-color: #A85B00
+          }
+
+          &.white-choco-bg {
+            background-color: #FFFFFF;
+            color: $color-choco;
+          }
+
           .user-collection--ag-logo {
             position: absolute;
             top: -28px;

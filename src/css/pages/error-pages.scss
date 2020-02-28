@@ -1,12 +1,12 @@
 .cup-page {
-  background-image: url("../img/common/cup.png");
-  background-position: center 160px;
-  background-size: auto;
+  background-image: url("../img/common/cup.png"), url("../img/common/bg-2-2.jpg");
+  background-position: center 160px, top center;
+  background-size: 615px auto, cover;
 }
 
 .error-page-content {
   position: relative;
-  padding-top: 22px;
+  padding-top: 8px;
   padding-bottom: 110px;
   box-sizing: border-box;
 
@@ -50,5 +50,52 @@
     a {
 
     }
+  }
+}
+
+@media screen and (max-width: $adaptive-mobile-top) {
+
+  .desktop-img {
+    display: none;
+  }
+
+  .mobile-img {
+    display: block;
+  }
+
+  .cup-page {
+    background-position: center 251px, top center;
+    background-size: 374px auto, cover;
+  }
+
+  .error-page-content {
+    padding-top: 52px;
+    padding-bottom: 55px;
+  }
+
+  .error-page-content .container {
+    width: 375px;
+    max-width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .error-page-content .error-page-img {
+    max-width: 100%;
+    left: -9px;
+    width: 307px;
+    height: auto;
+    margin: 0 auto 26px;
+  }
+
+  .error-page-content h1 {
+    font-size: 24px;
+    margin-bottom: 3px;
+  }
+
+  .error-page-content p {
+    max-width: 230px;
+    margin: 0 auto 82px;
   }
 }

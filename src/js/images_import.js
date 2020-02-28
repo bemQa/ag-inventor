@@ -6,9 +6,7 @@ import '../img/common/arrow-down-polygon-yellow.svg';
 import '../img/common/arrow-down-polygon.svg';
 import '../img/common/bg.jpg';
 import '../img/common/bg-2.jpg';
-import '../img/common/build-choco-result.png';
-import '../img/common/build-choco-result-pink.png';
-import '../img/common/build-choco-result-green.png';
+import '../img/common/bg-2-2.jpg';
 import '../img/common/burger.svg';
 import '../img/common/cabinet-icon.svg';
 import '../img/common/captcha-bg-arrow.svg';
@@ -18,7 +16,9 @@ import '../img/common/color-light.svg';
 import '../img/common/cup.png';
 import '../img/common/cup-2.png';
 import '../img/common/errors-404.png';
+import '../img/common/errors-404-mobile.png';
 import '../img/common/errors-500.png';
+import '../img/common/errors-500-mobile.png';
 import '../img/common/footer-ellipse.svg';
 import '../img/common/input-mark.svg';
 import '../img/common/menu-form.png';
@@ -61,4 +61,26 @@ import '../img/examples/choco-1-small.png';
 import '../img/examples/choco-2-small.png';
 import '../img/examples/choco-3-small.png';
 
+import '../img/choco-results/Chokolate_beige.png';
+import '../img/choco-results/Chokolate_black.png';
+import '../img/choco-results/Chokolate_brown.png';
+import '../img/choco-results/Chokolate_burgundy.png';
+
+import '../img/choco-results/Chokolate_dark_blue.png';
+import '../img/choco-results/Chokolate_dark_green.png';
+import '../img/choco-results/Chokolate_dark_pink.png';
+import '../img/choco-results/Chokolate_light_blue.png';
+
+import '../img/choco-results/Chokolate_light_green.png';
+import '../img/choco-results/Chokolate_light_orange.png';
+import '../img/choco-results/Chokolate_lilac.png';
+import '../img/choco-results/Chokolate_orange.png';
+
+import '../img/choco-results/Chokolate_pink.png';
+import '../img/choco-results/Chokolate_pistachio.png';
+import '../img/choco-results/Chokolate_purple.png';
+import '../img/choco-results/Chokolate_red.png';
+
+import '../img/choco-results/Chokolate_white.png';
+import '../img/choco-results/Chokolate_yellow.png';
 

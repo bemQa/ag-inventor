@@ -26,6 +26,7 @@ body.main-page {
     height: 680px;
     background-image: url("../img/common/ag-logo-desktop.png");
     background-position: top 37px center;
+    background-size: 470px auto;
   }
 
   .main-page-composition {
@@ -192,6 +193,8 @@ body.main-page {
       background-size: 375px auto;
       top: 76px;
       height: 550px;
+      width: 200%;
+      left: calc(-50% - 48px);
     }
 
     .container {

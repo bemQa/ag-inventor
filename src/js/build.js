@@ -43,6 +43,11 @@ export function BlockbusterBuilder() {
     this.wrap = $('.build-content');
     this.page = {
       container: this.f('.container').eq(0),
+      resultChocolateTextWrap: {
+        wrap: this.f('.result-chocolate--text-wrap'),
+        title: this.f('.result-chocolate--text-wrap .x-title'),
+        description: this.f('.result-chocolate--text-wrap .x-choco-type'),
+      },
       steps: {
         wrap: this.f('.build--slides-numbers-wrap'),
         circles: {
@@ -243,11 +248,12 @@ export function BlockbusterBuilder() {
       }
     });
 
-    this.page.finalSlide.form.inputs.title.on('change', e => {
+    this.page.finalSlide.form.inputs.title.on('keyup', e => {
       this.result.title = $(e.target).val();
+      this.page.resultChocolateTextWrap.title.text(this.result.title);
     });
 
-    this.page.finalSlide.form.inputs.description.on('change', e => {
+    this.page.finalSlide.form.inputs.description.on('keyup', e => {
       this.result.description = $(e.target).val();
     });
 
@@ -296,8 +302,7 @@ export function BlockbusterBuilder() {
 
         this.page.floatUi.buttons.left.hide();
         this.page.floatUi.buttons.right
-            .addClass('disabled')
-            .show();
+            .addClass('disabled');
 
         this.page.floatUi.variants.all
             .removeClass('filled')
@@ -306,7 +311,7 @@ export function BlockbusterBuilder() {
         this.page.floatUi.variants.variant_1.show();
         this.page.floatUi.variants.variant_2.show();
         this.page.floatUi.variants.variant_3.show();
-        this.page.submitButton.text('Сохранить прогресс');
+        this.page.submitButton.text('Сохранить и продолжить');
         this.page.floatUi.variants.wrap.show();
         break;
 
@@ -334,8 +339,7 @@ export function BlockbusterBuilder() {
 
         this.page.floatUi.buttons.left.show();
         this.page.floatUi.buttons.right
-            .addClass('disabled')
-            .show();
+            .addClass('disabled');
 
         this.page.floatUi.variants.all
             .removeClass('filled')
@@ -347,7 +351,7 @@ export function BlockbusterBuilder() {
         this.page.floatUi.variants.variant_2.hide();
         this.page.floatUi.variants.variant_3.hide();
 
-        this.page.submitButton.text('Сохранить прогресс');
+        this.page.submitButton.text('Сохранить и продолжить');
         this.page.floatUi.variants.wrap.show();
         break;
 
@@ -369,8 +373,7 @@ export function BlockbusterBuilder() {
 
         this.page.floatUi.buttons.left.show();
         this.page.floatUi.buttons.right
-            .addClass('disabled')
-            .show();
+            .addClass('disabled');
 
         this.page.floatUi.variants.all
             .removeClass('filled')
@@ -382,7 +385,7 @@ export function BlockbusterBuilder() {
         this.page.floatUi.variants.variant_2.hide();
         this.page.floatUi.variants.variant_3.hide();
 
-        this.page.submitButton.text('Сохранить прогресс');
+        this.page.submitButton.text('Сохранить и продолжить');
         this.page.floatUi.variants.wrap.show();
         break;
 
@@ -796,6 +799,13 @@ export function BlockbusterBuilder() {
     this.page.finalSlide.form.inputs.choco.val(this.result.choco);
     this.page.finalSlide.form.inputs.color.val(this.result.color);
 
+    if (this.step !== 4) {
+
+      if (!this.page.floatUi.buttons.right.hasClass('disabled')) {
+        this.stepForward();
+      }
+    }
+
     /*
     $.ajax({
       url: '',
@@ -864,6 +874,12 @@ export function BlockbusterBuilder() {
 
     this.result.color = colorBlock.attr('data-color-code');
 
+    if (~colorBlock.attr('style').indexOf('#FFF')) {
+      this.page.resultChocolateTextWrap.wrap.css('color', 'black');
+    } else {
+      this.page.resultChocolateTextWrap.wrap.css('color', 'white');
+    }
+
     this.page.floatUi.buttons.right.removeClass('disabled');
   };
 
@@ -912,7 +928,7 @@ export function BlockbusterBuilder() {
     switch (this.step) {
 
       case 1:
-        if (this.result.parts === []) {
+        if (this.result.parts.length === 0) {
           return null;
         }
         this.result.parts.map((partCode, index) => {
@@ -940,14 +956,10 @@ export function BlockbusterBuilder() {
         if (this.result.color === null) {
           return null;
         }
-        const colorBlock = $(`[data-color-code="${this.result.color}"]`);
 
         this.page.floatUi.variants.variant_1
             .find('div')
             .attr('style', colorBlock.attr('style'));
-
-        this.page.floatExampleResult.wrap.attr('style',
-            `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
 
         this.page.floatUi.buttons.right.removeClass('disabled');
 
@@ -956,6 +968,7 @@ export function BlockbusterBuilder() {
       case 4:
         if (this.result.title !== null) {
           this.page.finalSlide.form.inputs.title.val(this.result.title);
+          this.page.resultChocolateTextWrap.title.text(this.result.title);
         }
         if (this.result.description !== null) {
           this.page.finalSlide.form.inputs.description.val(this.result.description);
@@ -997,6 +1010,21 @@ export function BlockbusterBuilder() {
       });
     }
 
+    if (this.result.choco !== null) {
+      let thisChocolate = this.parts.filter(part => part.code === this.result.choco)[0];
+      this.page.resultChocolateTextWrap.description.text(thisChocolate.title.replace('<br>', ''));
+
+      const colorBlock = $(`[data-color-code="${this.result.color}"]`);
+
+      this.page.floatExampleResult.wrap.attr('style',
+          `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
+
+      if (~colorBlock.attr('style').indexOf('#FFF')) {
+        this.page.resultChocolateTextWrap.wrap.css('color', 'black');
+      } else {
+        this.page.resultChocolateTextWrap.wrap.css('color', 'white');
+      }
+    }
   };
 
   this.showFloatingParts = function () {

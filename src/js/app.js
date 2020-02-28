@@ -128,6 +128,14 @@ function tryLoadScrollbarFor_FAQ() {
   window.faqScrollbar = new PerfectScrollbar(faqContainer.toArray()[0]);
 }
 
+$(".mobile-menu-btn").on('click', function () {
+  $('body').toggleClass('no-scroll');
+  $('header').toggleClass('menu-opened');
+  $(this).toggleClass('active');
+  $(".menu").toggleClass('active');
+});
+
+
 export {
   stickFooter
 }

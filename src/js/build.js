@@ -527,7 +527,6 @@ export function BlockbusterBuilder() {
       this.page.sliderBody.main.content.scene.element.removeClass('in-cart');
       this.page.floatUi.buttons.right.removeClass('disabled')
     }, 3000);
-
   };
 
   this.stepBackward = function () {
@@ -557,6 +556,10 @@ export function BlockbusterBuilder() {
 
           this.page.chocoAnimation.choco.css({display: 'block'});
           this.page.chocoAnimation.venchik.css({display: 'block'});
+
+          this.page.chocoAnimation.choco.css(
+              'background-image',
+              `url('/img/common/${this.currentChocolate.code}.gif')`);
 
           this.page.chocoAnimation.choco.animate({
             opacity: 1
@@ -1007,9 +1010,11 @@ export function BlockbusterBuilder() {
     }
 
     if (this.result.choco !== null) {
-      let thisChocolate = this.parts.filter(part => part.code === this.result.choco)[0];
-      this.page.resultChocolateTextWrap.description.text(thisChocolate.title.replace('<br>', ''));
+      this.currentChocolate = this.parts.filter(part => part.code === this.result.choco)[0];
+      this.page.resultChocolateTextWrap.description.text(this.currentChocolate.title.replace('<br>', ''));
+    }
 
+    if (this.result.color) {
       const colorBlock = $(`[data-color-code="${this.result.color}"]`);
 
       if (this.step === 3) {
@@ -1031,6 +1036,8 @@ export function BlockbusterBuilder() {
     if (this.step !== 3 && this.step !== 4) {
       this.page.floatExampleResult.wrap.hide();
     }
+
+
   };
 }
 

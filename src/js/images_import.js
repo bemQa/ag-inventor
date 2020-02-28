@@ -64,14 +64,15 @@ import '../img/examples/choco-3-small.png';
 import '../img/choco-results/Chokolate_beige.png';
 import '../img/choco-results/Chokolate_black.png';
 import '../img/choco-results/Chokolate_brown.png';
-import '../img/choco-results/Chokolate_burgundy.png';
 
+import '../img/choco-results/Chokolate_burgundy.png';
 import '../img/choco-results/Chokolate_dark_blue.png';
 import '../img/choco-results/Chokolate_dark_green.png';
+
 import '../img/choco-results/Chokolate_dark_pink.png';
 import '../img/choco-results/Chokolate_light_blue.png';
-
 import '../img/choco-results/Chokolate_light_green.png';
+
 import '../img/choco-results/Chokolate_light_orange.png';
 import '../img/choco-results/Chokolate_lilac.png';
 import '../img/choco-results/Chokolate_orange.png';
@@ -79,8 +80,11 @@ import '../img/choco-results/Chokolate_orange.png';
 import '../img/choco-results/Chokolate_pink.png';
 import '../img/choco-results/Chokolate_pistachio.png';
 import '../img/choco-results/Chokolate_purple.png';
-import '../img/choco-results/Chokolate_red.png';
 
+import '../img/choco-results/Chokolate_red.png';
 import '../img/choco-results/Chokolate_white.png';
 import '../img/choco-results/Chokolate_yellow.png';
 
+import '../img/common/dark-choco.gif';
+import '../img/common/milk-choco.gif';
+import '../img/common/white-choco.gif';

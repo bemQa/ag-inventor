@@ -1814,7 +1814,7 @@ footer .footer-copyright span {
   position: absolute;
   display: none;
   opacity: 0;
-  top: 16px;
+  top: 5px;
   left: -11px;
   height: 443px;
   width: 100%;
@@ -2099,5 +2099,10 @@ footer .footer-copyright span {
 @media screen and (max-width: 400px) {
   .build-content .build--slider-body .categories-select-wrap .categories-select .categories-option {
     font-size: 10px;
+  }
+}
+@media screen and (min-width: 780px) and (max-width: 1070px) {
+  body {
+    min-width: 1070px;
   }
 }

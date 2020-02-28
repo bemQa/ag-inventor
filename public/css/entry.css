@@ -568,11 +568,7 @@ body.main-page .header-bg--mobile-addition {
   }
 
   .main-page-content .main-page-composition {
-    background-size: auto 100%;
-    top: 76px;
-    height: 550px;
-    width: 200%;
-    left: calc(-50% - 48px);
+    height: 450px;
   }
 }
 .cabinet-page-content {

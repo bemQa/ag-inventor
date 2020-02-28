@@ -189,6 +189,15 @@
       }
     }
 
+    &.step-5 {
+      top: 0;
+      padding-top: 63px;
+
+      .select-color--result {
+        top: 63px;
+      }
+    }
+
     .categories-select-wrap {
       position: absolute;
       display: flex;
@@ -1049,3 +1058,139 @@
     min-width: 1070px;
   }
 }
+
+.sharing-slide {
+  width: 100%;
+  padding: 44px 16px;
+  z-index: 3;
+
+  .sharing-title {
+    font-family: MDLZ, sans-serif;
+    width: 300px;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: $color-choco-2;
+    left: 75px;
+  }
+
+  .sharing-logo {
+    height: 204px;
+    width: 100%;
+    margin-top: -5px;
+    margin-bottom: 92px;
+    background-image: url("../img/main/blockbuster.png");
+    background-size: auto 100%;
+    background-position: top left;
+
+    img {
+      display: none;
+    }
+  }
+
+  .sharing-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding-left: 8px;
+
+    .sharing-links-title {
+      margin-right: 7px;
+      font-size: 16px;
+      font-family: MDLZ, sans-serif;
+      color: $color-choco-2;
+    }
+
+    .sharing-links-body {
+      display: flex;
+      justify-content: flex-start;
+      top: -4px;
+
+      .sharing-link {
+        display: block;
+        margin-right: 10px;
+        width: 26px;
+        height: 26px;
+        border-radius: 100px;
+        background-size: 100%;
+
+        &--vk {
+          background-image: url("../img/common/social-vk.png");
+        }
+
+        &--ok {
+          background-image: url("../img/common/social-ok.png");
+        }
+
+        &--fb {
+          background-image: url("../img/common/social-fb.png");
+        }
+      }
+    }
+  }
+}
+
+.build-content .select-color--result.step-5 {
+  right: 160px;
+}
+
+@media screen and (max-width: $adaptive-mobile-top) {
+
+  .build-content .build--slider-body.step-5 {
+    padding-top: 3px;
+  }
+
+  .sharing-slide {
+    padding: 44px 0 0;
+
+    .sharing-title {
+      left: 0;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .sharing-logo {
+      background-image: none;
+      height: auto;
+      width: 100%;
+      text-align: center;
+      left: -2px;
+      margin-bottom: 345px;
+
+      img {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+        max-width: 341px;
+        height: auto;
+      }
+    }
+
+    .sharing-links {
+      flex-direction: column;
+      align-items: center;
+
+      .sharing-links-title {
+        margin-bottom: 11px;
+      }
+
+      .sharing-links-body {
+
+
+        .sharing-link {
+
+        }
+      }
+    }
+  }
+
+  .build-content .build--slider-body.step-5 .select-color--result.step-5 {
+    position: absolute;
+    top: 283px;
+    right: 0;
+    margin: 3px calc(50% - 111px) 0;
+  }
+}
+

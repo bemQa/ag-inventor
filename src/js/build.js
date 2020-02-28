@@ -152,6 +152,10 @@ export function BlockbusterBuilder() {
       chocoAnimation: {
         choco: $('.choco-animation'),
         venchik: $('.venchik-img')
+      },
+      sharingSlide: {
+        wrap: this.f('.sharing-slide'),
+        title: this.f('.sharing-title'),
       }
     };
   };
@@ -270,7 +274,9 @@ export function BlockbusterBuilder() {
   this.load = function () {
 
     {
-      if (~location.href.indexOf('step=4')) {
+      if (~location.href.indexOf('step=5')) {
+        this.step = 5;
+      } else if (~location.href.indexOf('step=4')) {
         this.step = 4;
       } else if (~location.href.indexOf('step=3')) {
         this.step = 3;
@@ -420,6 +426,28 @@ export function BlockbusterBuilder() {
 
         this.page.submitButton.text('Сохранить и создать свой блокбастер вкуса');
         this.page.floatUi.variants.wrap.hide();
+        break;
+
+      case 5:
+        this.page.container.removeClass('steps-3-4');
+
+        this.page.finalSlide.wrap.hide();
+        this.page.floatExampleResult.wrap.hide();
+
+        this.page.floatUi.buttons.left.hide();
+        this.page.floatUi.buttons.right.hide();
+
+        this.page.sliderBody.wrap
+            .removeClass('steps-3-4')
+            .removeClass('step-4')
+            .addClass('step-5')
+            .show();
+
+        this.page.floatExampleResult.images.all.hide();
+
+        this.page.submitButton.hide();
+        this.page.floatUi.variants.wrap.hide();
+        this.page.sharingSlide.wrap.show();
     }
 
     this.page.floatUi.variants.variant_1
@@ -429,11 +457,15 @@ export function BlockbusterBuilder() {
     this.page.steps.circles.all.removeClass('circle-filled');
     this.page.steps.text.all.removeClass('step-selected');
 
-    this.page.steps.circles[`number_${this.step}`].addClass('circle-filled');
-    this.page.steps.text[`number_${this.step}`].addClass('step-selected');
-    this.page.steps.wrap.show();
-
-    this.page.floatUi.wrap.show();
+    if (this.step === 5) {
+      this.page.steps.wrap.hide();
+      this.page.floatUi.wrap.hide();
+    } else {
+      this.page.steps.circles[`number_${this.step}`].addClass('circle-filled');
+      this.page.steps.text[`number_${this.step}`].addClass('step-selected');
+      this.page.steps.wrap.show();
+      this.page.floatUi.wrap.show();
+    }
 
     this.fillFromState();
     stickFooter();
@@ -529,6 +561,45 @@ export function BlockbusterBuilder() {
     }, 3000);
   };
 
+  this.getSharingLink = function (isFinal) {
+
+    if (typeof isFinal === 'undefined') {
+      isFinal = true;
+    }
+
+    let sharingLink = location.pathname + '?';
+
+    let params = [];
+
+    if (this.result.parts.length !== 0) {
+      this.result.parts.map(part => {
+        params.push(`parts[]=${part}`);
+      });
+    }
+
+    if (this.result.color) {
+      params.push(`color=${this.result.color}`);
+    }
+
+    if (this.result.choco) {
+      params.push(`choco=${this.result.choco}`);
+    }
+
+    if (this.result.title) {
+      params.push(`title=${this.result.title}`);
+    }
+
+    if (isFinal) {
+      params.push('step=5');
+    } else {
+      params.push(`step=${this.step}`);
+    }
+
+    sharingLink += params.join('&');
+
+    return encodeURI(sharingLink);
+  };
+
   this.stepBackward = function () {
 
     if (this.step === 1) {
@@ -542,8 +613,13 @@ export function BlockbusterBuilder() {
 
     switch (this.step) {
 
-      case 4:
+      case 5:
         return null;
+
+      case 4:
+        this.step++;
+        location.href = this.getSharingLink();
+        break;
 
       case 2:
 
@@ -802,11 +878,25 @@ export function BlockbusterBuilder() {
     this.page.finalSlide.form.inputs.choco.val(this.result.choco);
     this.page.finalSlide.form.inputs.color.val(this.result.color);
 
-    if (this.step !== 4) {
+    switch (this.step) {
 
-      if (!this.page.floatUi.buttons.right.hasClass('disabled')) {
-        this.stepForward();
-      }
+      case 1:
+      case 2:
+      case 3:
+        if (!this.page.floatUi.buttons.right.hasClass('disabled')) {
+          this.stepForward();
+        }
+        break;
+
+      case 4:
+        if (this.page.finalSlide.form.inputs.title.val() &&
+            this.page.finalSlide.form.inputs.description.val()) {
+          this.stepForward();
+        }
+        break;
+
+      case 5:
+        return null;
     }
 
     /*
@@ -972,10 +1062,21 @@ export function BlockbusterBuilder() {
         if (this.result.description !== null) {
           this.page.finalSlide.form.inputs.description.val(this.result.description);
         }
+        break;
+
+      case 5:
+        $('body').addClass('step-5');
+        this.page.resultChocolateTextWrap.title.text(this.result.title);
+        this.page.sharingSlide.title.html(`${this.result.title} —`);
+        this.page.sharingSlide.wrap.show();
+        this.page.floatExampleResult.wrap
+            .addClass('step-5')
+            .show();
     }
 
     if (this.step === 3 ||
-        this.step === 4) {
+        this.step === 4 ||
+        this.step === 5) {
 
       this.page.floatExampleResult.images.all.hide();
 
@@ -1033,11 +1134,11 @@ export function BlockbusterBuilder() {
       }
     }
 
-    if (this.step !== 3 && this.step !== 4) {
+    if (this.step !== 3 &&
+        this.step !== 4 &&
+        this.step !== 5) {
       this.page.floatExampleResult.wrap.hide();
     }
-
-
   };
 }
 

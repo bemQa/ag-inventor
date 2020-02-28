@@ -8,6 +8,10 @@ body {
   &.no-scroll {
     overflow: hidden;
   }
+
+  &.step-5 {
+    background-image: url("../img/common/bg-2-3.jpg");
+  }
 }
 
 textarea {
@@ -32,11 +36,11 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../img/templates/404-mobile.png");
+  background-image: url("../img/templates/step-5-mobile.png");
   background-position: center top;
   opacity: .6;
   min-height: 1000px;
-  display: none;
+  //display: none;
 }
 
 .dev {

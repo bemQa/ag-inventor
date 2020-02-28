@@ -117,6 +117,7 @@ button {
   background-position: center top;
   opacity: 0.6;
   min-height: 1000px;
+  display: none;
 }
 
 .dev {

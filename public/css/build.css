@@ -2089,6 +2089,12 @@ footer .footer-copyright span {
   .build-content .build-body--main-ui-wrap .build-ui--submit-button:hover {
     padding: 12px 11px;
   }
+
+  .result-chocolate--text-wrap {
+    top: 230px;
+    left: 3px;
+    transform: rotate(7deg) scaleX(0.9) skew(1deg, 1deg) scale(0.7);
+  }
 }
 @media screen and (max-width: 400px) {
   .build-content .build--slider-body .categories-select-wrap .categories-select .categories-option {

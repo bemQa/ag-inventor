@@ -321,7 +321,6 @@ export function BlockbusterBuilder() {
         this.page.container.removeClass('steps-3-4');
 
         this.page.selectColorSlide.wrap.hide();
-        this.page.floatExampleResult.wrap.hide();
         this.page.sliderBody.categories.wrap.hide();
 
         this.fillChocolateSlider();
@@ -353,6 +352,7 @@ export function BlockbusterBuilder() {
 
         this.page.submitButton.text('Сохранить и продолжить');
         this.page.floatUi.variants.wrap.show();
+        this.page.floatExampleResult.wrap.hide();
         break;
 
       case 3:
@@ -957,10 +957,6 @@ export function BlockbusterBuilder() {
           return null;
         }
 
-        this.page.floatUi.variants.variant_1
-            .find('div')
-            .attr('style', colorBlock.attr('style'));
-
         this.page.floatUi.buttons.right.removeClass('disabled');
 
         break;
@@ -1016,6 +1012,12 @@ export function BlockbusterBuilder() {
 
       const colorBlock = $(`[data-color-code="${this.result.color}"]`);
 
+      if (this.step === 3) {
+        this.page.floatUi.variants.variant_1
+            .find('div')
+            .attr('style', colorBlock.attr('style'));
+      }
+
       this.page.floatExampleResult.wrap.attr('style',
           `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
 
@@ -1025,10 +1027,10 @@ export function BlockbusterBuilder() {
         this.page.resultChocolateTextWrap.wrap.css('color', 'white');
       }
     }
-  };
 
-  this.showFloatingParts = function () {
-
+    if (this.step !== 3 && this.step !== 4) {
+      this.page.floatExampleResult.wrap.hide();
+    }
   };
 }
 

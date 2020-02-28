@@ -524,7 +524,7 @@ body.main-page .header-bg--mobile-addition {
   }
   .main-page-content .main-page-composition {
     background-image: url(/img/mobile/main-page-comp-mobile.png);
-    background-size: 375px auto;
+    background-size: auto 100%;
     top: 76px;
     height: 550px;
     width: 200%;
@@ -560,6 +560,19 @@ body.main-page .header-bg--mobile-addition {
   }
   .main-page-content .main-page--cta-button {
     left: 0;
+  }
+}
+@media screen and (max-width: 340px) {
+  .main-page-content .container {
+    padding-top: 440px;
+  }
+
+  .main-page-content .main-page-composition {
+    background-size: auto 100%;
+    top: 76px;
+    height: 550px;
+    width: 200%;
+    left: calc(-50% - 48px);
   }
 }
 .cabinet-page-content {

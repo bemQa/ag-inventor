@@ -253,6 +253,10 @@ export function BlockbusterBuilder() {
     });
 
     this.page.finalSlide.form.inputs.title.on('keyup', e => {
+      if (typeof $(e.target).val().length !== 'undefined' &&
+          typeof $(e.target).val().length > 25) {
+        e.preventDefault();
+      }
       this.result.title = $(e.target).val();
       this.page.resultChocolateTextWrap.title.text(this.result.title);
     });

@@ -1602,6 +1602,9 @@ footer .footer-copyright span {
   text-align: center;
   border: 1px solid #C84F2B;
 }
+.build-content .build--final-slide #build-result-form .input-group.input-group--build-title input::placeholder {
+  color: gainsboro;
+}
 .build-content .build--final-slide #build-result-form .input-group.input-group--textarea .input-description {
   max-width: 177px;
   margin: 5px auto 0;
@@ -1858,8 +1861,8 @@ footer .footer-copyright span {
 }
 .result-chocolate--text-wrap .x-title {
   max-width: 139px;
-  min-height: 43px;
-  max-height: 43px;
+  min-height: 38px;
+  max-height: 38px;
   margin: 0 auto 4px;
   line-height: 18px;
   font-weight: 600;
@@ -2129,6 +2132,7 @@ footer .footer-copyright span {
   text-align: center;
   color: #C84F2B;
   left: 75px;
+  min-height: 100px;
 }
 .sharing-slide .sharing-logo {
   height: 204px;

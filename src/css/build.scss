@@ -489,6 +489,10 @@
             font-family: MDLZ, sans-serif;
             text-align: center;
             border: 1px solid $color-choco-2;
+
+            &::placeholder {
+              color: rgb(220, 220, 220);
+            }
           }
         }
 
@@ -789,8 +793,8 @@
 
   .x-title {
     max-width: 139px;
-    min-height: 43px;
-    max-height: 43px;
+    min-height: 38px;
+    max-height: 38px;
     margin: 0 auto 4px;
     line-height: 18px;
     font-weight: 600;
@@ -1072,6 +1076,7 @@
     text-align: center;
     color: $color-choco-2;
     left: 75px;
+    min-height: 100px;
   }
 
   .sharing-logo {

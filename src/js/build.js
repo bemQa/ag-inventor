@@ -1309,6 +1309,8 @@ export function BlockbusterBuilder() {
             }
           } else {
 
+            this.step = 4;
+
             if (typeof result.title !== 'undefined') {
               showServiceMessage({
                 title: result.title,

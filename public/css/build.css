@@ -636,6 +636,14 @@ body.main-page .header-bg--mobile-addition {
   text-decoration-line: underline;
 }
 
+@media screen and (max-width: 780px) {
+  .cross-site-promo--wrap {
+    top: auto !important;
+    bottom: 20px !important;
+    max-width: 100%;
+    animation: none;
+  }
+}
 .cabinet-page-content {
   position: relative;
   box-sizing: border-box;

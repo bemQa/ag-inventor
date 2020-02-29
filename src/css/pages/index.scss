@@ -340,3 +340,12 @@ body.main-page {
     text-decoration-line: underline;
   }
 }
+
+@media screen and (max-width: $adaptive-mobile-top) {
+  .cross-site-promo--wrap {
+    top: auto !important;
+    bottom: 20px !important;
+    max-width: 100%;
+    animation: none;
+  }
+}

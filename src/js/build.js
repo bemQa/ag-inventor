@@ -1291,6 +1291,7 @@ export function BlockbusterBuilder() {
           $('body').removeClass('no-scroll');
           $('.popup, .popup-content.active').removeClass('active');
           clearTimeout(window.showLoadingPopup);
+          this.loading = false;
 
           if (typeof result.success === 'undefined') {
             this.showServerError();

@@ -136,5 +136,6 @@ $(".mobile-menu-btn").on('click', function () {
 });
 
 export {
-  stickFooter
+  stickFooter,
+  showServiceMessage
 }

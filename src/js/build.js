@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {stickFooter} from './app'
+import {stickFooter, showServiceMessage} from './app'
 import productsJSON from './../demo/ingredients';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
@@ -422,13 +422,17 @@ export function BlockbusterBuilder() {
         break;
 
       case 4:
+        $('body').removeClass('step-5');
         this.page.cupBg.hide();
 
         this.page.container.addClass('steps-3-4');
+        this.page.sharingSlide.wrap.hide();
 
         this.page.selectColorSlide.wrap.hide();
         this.page.finalSlide.wrap.show();
-        this.page.floatExampleResult.wrap.show();
+        this.page.floatExampleResult.wrap
+            .removeClass('step-5')
+            .show();
 
         this.page.floatUi.buttons.left.show();
         this.page.floatUi.buttons.right
@@ -442,9 +446,11 @@ export function BlockbusterBuilder() {
         this.page.sliderBody.wrap
             .addClass('steps-3-4')
             .addClass('step-4')
+            .removeClass('step-5')
             .show();
 
         this.page.floatExampleResult.images.all.hide();
+        this.page.submitButton.show();
 
         this.page.floatUi.variants.variant_1.hide();
         this.page.floatUi.variants.variant_2.hide();
@@ -639,12 +645,11 @@ export function BlockbusterBuilder() {
 
     switch (this.step) {
 
-      case 5:
-        return null;
-
-      case 4:
+      case 1:
+      case 3:
         this.step++;
-        location.href = this.getSharingLink();
+        this.loadByStep();
+        this.saveStats();
         break;
 
       case 2:
@@ -690,19 +695,35 @@ export function BlockbusterBuilder() {
             this.addingIsLocked = false;
             this.step++;
             this.loadByStep();
+            this.saveStats();
           }, 2000);
 
         } else {
 
           this.step++;
           this.loadByStep();
+          this.saveStats();
         }
-
         break;
 
-      default:
+      case 4:
+        if (this.loading === true) {
+          return null;
+        }
+
         this.step++;
-        this.loadByStep();
+        this.loading = true;
+        window.showLoadingPopup = setTimeout(_ => {
+          showServiceMessage({
+            title: 'Загрузка',
+            body: 'Ожидание ответа сервера...'
+          });
+        }, 1500);
+        this.saveStats();
+        break;
+
+      case 5:
+        return null;
     }
   };
 
@@ -918,21 +939,14 @@ export function BlockbusterBuilder() {
         if (this.page.finalSlide.form.inputs.title.val() &&
             this.page.finalSlide.form.inputs.description.val()) {
           this.stepForward();
+        } else {
+          showServiceMessage('Заполните обязательные поля: Название и Описание');
         }
         break;
 
       case 5:
         return null;
     }
-
-    /*
-    $.ajax({
-      url: '',
-      data: {},
-      success: _ => {},
-      error: _ => {},
-    });
-     */
   };
 
   this.setIngredients = function () {
@@ -1047,6 +1061,10 @@ export function BlockbusterBuilder() {
       this.result.description = urlParams.get('description');
     }
 
+    if (urlParams.has('chokoId')) {
+      this.result.chocoId = urlParams.get('chokoId');
+    }
+
     this.result.parts.map(backendPart => {
       const thisPartChecked = this.parts
           .filter(part => part.code === backendPart)
@@ -1056,6 +1074,10 @@ export function BlockbusterBuilder() {
         this.result.parts.splice(~this.result.parts.indexOf(backendPart), 1);
       }
     });
+
+    if (this.result.title === null && this.step === 5) {
+      this.stepBackward();
+    }
   };
 
   this.fillFromState = function () {
@@ -1088,39 +1110,6 @@ export function BlockbusterBuilder() {
         break;
 
       case 3:
-        if (this.result.choco !== null) {
-
-          let chocoImage = null,
-              colorBlock;
-
-          if (this.result.color !== null) {
-            colorBlock = this.page.selectColorSlide.elements.map(element => {
-              return $(element).attr('data-color-code') === this.result.color;
-            })[0];
-          } else {
-            colorBlock = this.page.selectColorSlide.elements[0];
-          }
-
-          colorBlock = $(colorBlock);
-
-          switch (this.result.choco) {
-            case 'dark-choco':
-              chocoImage = colorBlock.attr('data-color-choco-image-dark');
-              break;
-
-            case 'milk-choco':
-              chocoImage = colorBlock.attr('data-color-choco-image-milk');
-              break;
-
-            case 'white-choco':
-              chocoImage = colorBlock.attr('data-color-choco-image-white');
-              break;
-          }
-
-          this.page.floatExampleResult.wrap.attr('style',
-              `background-image: url('${chocoImage}')`);
-        }
-
         if (this.result.color !== null) {
           this.page.floatUi.buttons.right.removeClass('disabled');
         }
@@ -1150,6 +1139,39 @@ export function BlockbusterBuilder() {
     if (this.step === 3 ||
         this.step === 4 ||
         this.step === 5) {
+
+      if (this.result.choco !== null) {
+
+        let chocoImage = null,
+            colorBlock;
+
+        if (this.result.color !== null) {
+          colorBlock = this.page.selectColorSlide.elements.map(element => {
+            return $(element).attr('data-color-code') === this.result.color;
+          })[0];
+        } else {
+          colorBlock = this.page.selectColorSlide.elements[0];
+        }
+
+        colorBlock = $(colorBlock);
+
+        switch (this.result.choco) {
+          case 'dark-choco':
+            chocoImage = colorBlock.attr('data-color-choco-image-dark');
+            break;
+
+          case 'milk-choco':
+            chocoImage = colorBlock.attr('data-color-choco-image-milk');
+            break;
+
+          case 'white-choco':
+            chocoImage = colorBlock.attr('data-color-choco-image-white');
+            break;
+        }
+
+        this.page.floatExampleResult.wrap.attr('style',
+            `background-image: url('${chocoImage}')`);
+      }
 
       this.page.floatExampleResult.images.all.hide();
 
@@ -1228,6 +1250,88 @@ export function BlockbusterBuilder() {
         this.step !== 5) {
       this.page.floatExampleResult.wrap.hide();
     }
+  };
+
+  this.saveStats = function () {
+
+    let url = ~location.host.indexOf('localhost:8080') ||
+    ~location.href.indexOf('demo-success')
+        ? 'https://p24-json.n0.world/success.php'
+        : '/Home/SaveChoko';
+
+    if (~location.href.indexOf('demo-failed')) {
+      url = '/https://ag2.n0.world/failed.php';
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: {
+        chokoId: typeof this.result.chocoId !== "undefined"
+            ? this.result.chocoId : null,
+        stepId: this.step,
+        ingr1Step1: typeof this.result.parts[0] !== "undefined"
+            ? this.result.parts[0] : null,
+        ingr2Step1: typeof this.result.parts[1] !== "undefined"
+            ? this.result.parts[1] : null,
+        ingr3Step1: typeof this.result.parts[2] !== "undefined"
+            ? this.result.parts[2] : null,
+        chocoColor: typeof this.result.choco !== "undefined"
+            ? this.result.choco : null,
+        color: typeof this.result.color !== "undefined"
+            ? this.result.color : null,
+        chocoName: typeof this.result.title !== "undefined"
+            ? this.result.title : null,
+        chocoDesc: typeof this.result.description !== "undefined"
+            ? this.result.description : null,
+      },
+      dataType: 'json'
+    })
+        .done(result => {
+          $('body').removeClass('no-scroll');
+          $('.popup, .popup-content.active').removeClass('active');
+          clearTimeout(window.showLoadingPopup);
+
+          if (typeof result.success === 'undefined') {
+            this.showServerError();
+          }
+
+          if (typeof result.chokoId !== 'undefined') {
+            this.result.chocoId = result.chokoId;
+          }
+
+          if (result.success === true) {
+            if (this.step === 5) {
+              location.href = this.getSharingLink();
+            } else {
+              return true;
+            }
+          } else {
+
+            if (typeof result.title !== 'undefined') {
+              showServiceMessage({
+                title: result.title,
+                description: typeof result.description !== 'undefined'
+                    ? result.description
+                    : '...'
+              });
+            } else {
+              this.showServerError();
+            }
+          }
+        })
+        .fail(_ => {
+          $('body').removeClass('no-scroll');
+          $('.popup, .popup-content.active').removeClass('active');
+          clearTimeout(window.showLoadingPopup);
+        });
+  };
+
+  this.showServerError = function () {
+    showServiceMessage({
+      title: 'Функция временно недоступна',
+      description: 'Проводятся технические работы.'
+    })
   };
 }
 

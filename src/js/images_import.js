@@ -12,6 +12,7 @@ import '../img/common/cabinet-icon.svg';
 import '../img/common/captcha-bg-arrow.svg';
 import '../img/common/captcha-dummy.jpg';
 import '../img/common/close-choco.svg';
+import '../img/common/close-white.svg';
 import '../img/common/color-light.svg';
 import '../img/common/cup.png';
 import '../img/common/cup-2.png';

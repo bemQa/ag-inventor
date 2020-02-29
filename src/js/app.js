@@ -128,6 +128,11 @@ function tryLoadScrollbarFor_FAQ() {
   window.faqScrollbar = new PerfectScrollbar(faqContainer.toArray()[0]);
 }
 
+$('.cross-site-promo--close').on('click', _ => {
+  $('.cross-site-promo--wrap').hide();
+  document.cookie = "crossPromoWasClosed=true; path=/";
+});
+
 $(".mobile-menu-btn").on('click', function () {
   $('body').toggleClass('no-scroll');
   $('header').toggleClass('menu-opened');

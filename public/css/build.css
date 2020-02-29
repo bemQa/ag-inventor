@@ -575,6 +575,67 @@ body.main-page .header-bg--mobile-addition {
     left: calc(-50% - 42px);
   }
 }
+@keyframes crossSitePromo {
+  0% {
+    opacity: 0;
+    top: 80px;
+  }
+  30% {
+    opacity: 0;
+    top: 80px;
+  }
+  100% {
+    opacity: 1;
+    top: 70px;
+  }
+}
+.cross-site-promo--wrap {
+  position: fixed;
+  background-color: #75BAE5;
+  color: white;
+  right: 0;
+  top: 70px;
+  opacity: 1;
+  height: 102px;
+  width: 302px;
+  padding: 15px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 4;
+  box-sizing: border-box;
+  animation: 2s crossSitePromo;
+}
+.cross-site-promo--wrap * {
+  position: relative;
+  box-sizing: border-box;
+}
+.cross-site-promo--wrap .cross-site-promo--close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 44px;
+  width: 44px;
+  background-image: url(/img/common/close-white.svg);
+  background-size: 14px;
+  background-position: center;
+  cursor: pointer;
+  z-index: 5;
+}
+.cross-site-promo--wrap .cross-site-promo--title {
+  font-family: MDLZ, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 15px;
+}
+.cross-site-promo--wrap .cross-site-promo--promo-link {
+  display: block;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration-line: underline;
+}
+
 .cabinet-page-content {
   position: relative;
   box-sizing: border-box;

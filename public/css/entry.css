@@ -928,6 +928,7 @@ body.faq-page {
 }
 .faq-page-content .faq--list .faq--question .faq--question-header .faq--question-title {
   width: calc(100% - 36px);
+  padding-right: 25px;
 }
 .faq-page-content .faq--list .faq--question .faq--question-answer {
   max-height: 0;

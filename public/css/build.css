@@ -627,13 +627,13 @@ body.main-page .header-bg--mobile-addition {
   line-height: 19px;
   margin-bottom: 15px;
 }
-.cross-site-promo--wrap .cross-site-promo--promo-link {
+.cross-site-promo--wrap .cross-site-promo--link {
   display: block;
   font-family: "PT Sans", sans-serif;
   font-size: 14px;
   line-height: 18px;
   text-align: center;
-  text-decoration-line: underline;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 780px) {

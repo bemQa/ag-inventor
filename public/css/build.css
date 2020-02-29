@@ -1640,7 +1640,7 @@ footer .footer-copyright span {
   right: 0;
   width: 300px;
   height: 500px;
-  background-image: url(/img/choco-results/Chokolate_white.png);
+  background-image: url(/img/white-choco-results/Chokolate_white.png);
   background-size: 284px 456px;
   background-position: -43px -34px;
   z-index: 2;
@@ -1772,7 +1772,7 @@ footer .footer-copyright span {
   margin-right: 21px;
 }
 .build-content .build-body--main-ui-wrap .build-ui--variants-section .build-ui--variants-content .build-ui--variants--element.filled {
-  background-size: contain;
+  background-size: 70%;
 }
 .build-content .build-body--main-ui-wrap .build-ui--variants-section .build-ui--variants-content .build-ui--variants--element.filled:after {
   position: absolute;

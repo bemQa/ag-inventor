@@ -196,8 +196,29 @@ export function BlockbusterBuilder() {
           break;
 
         case 3:
-          this.page.floatExampleResult.wrap.attr('style', '');
           this.result.color = null;
+
+          let chocoImage,
+              colorBlock = this.page.selectColorSlide.elements[0];
+
+          colorBlock = $(colorBlock);
+
+          switch (this.result.choco) {
+            case 'dark-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-dark');
+              break;
+
+            case 'milk-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-milk');
+              break;
+
+            case 'white-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-white');
+              break;
+          }
+
+          this.page.floatExampleResult.wrap.attr('style',
+              `background-image: url('${chocoImage}')`);
       }
 
       button
@@ -963,14 +984,30 @@ export function BlockbusterBuilder() {
 
   this.selectChocoColor = function (colorBlock) {
 
+    this.result.color = colorBlock.attr('data-color-code');
+
+    let chocoImage;
+
+    switch (this.result.choco) {
+      case 'dark-choco':
+        chocoImage = colorBlock.attr('data-color-choco-image-dark');
+        break;
+
+      case 'milk-choco':
+        chocoImage = colorBlock.attr('data-color-choco-image-milk');
+        break;
+
+      case 'white-choco':
+        chocoImage = colorBlock.attr('data-color-choco-image-white');
+        break;
+    }
+
     this.page.floatExampleResult.wrap.attr('style',
-        `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
+        `background-image: url('${chocoImage}')`);
 
     this.page.floatUi.variants.variant_1_color
         .attr('style', colorBlock.attr('style'))
         .show();
-
-    this.result.color = colorBlock.attr('data-color-code');
 
     if (~colorBlock.attr('style').indexOf('#FFF')) {
       this.page.resultChocolateTextWrap.wrap.css('color', 'black');
@@ -1051,11 +1088,42 @@ export function BlockbusterBuilder() {
         break;
 
       case 3:
-        if (this.result.color === null) {
-          return null;
+        if (this.result.choco !== null) {
+
+          let chocoImage = null,
+              colorBlock;
+
+          if (this.result.color !== null) {
+            colorBlock = this.page.selectColorSlide.elements.map(element => {
+              return $(element).attr('data-color-code') === this.result.color;
+            })[0];
+          } else {
+            colorBlock = this.page.selectColorSlide.elements[0];
+          }
+
+          colorBlock = $(colorBlock);
+
+          switch (this.result.choco) {
+            case 'dark-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-dark');
+              break;
+
+            case 'milk-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-milk');
+              break;
+
+            case 'white-choco':
+              chocoImage = colorBlock.attr('data-color-choco-image-white');
+              break;
+          }
+
+          this.page.floatExampleResult.wrap.attr('style',
+              `background-image: url('${chocoImage}')`);
         }
 
-        this.page.floatUi.buttons.right.removeClass('disabled');
+        if (this.result.color !== null) {
+          this.page.floatUi.buttons.right.removeClass('disabled');
+        }
 
         break;
 
@@ -1129,8 +1197,24 @@ export function BlockbusterBuilder() {
             .attr('style', colorBlock.attr('style'));
       }
 
+      let chocoImage;
+
+      switch (this.result.choco) {
+        case 'dark-choco':
+          chocoImage = colorBlock.attr('data-color-choco-image-dark');
+          break;
+
+        case 'milk-choco':
+          chocoImage = colorBlock.attr('data-color-choco-image-milk');
+          break;
+
+        case 'white-choco':
+          chocoImage = colorBlock.attr('data-color-choco-image-white');
+          break;
+      }
+
       this.page.floatExampleResult.wrap.attr('style',
-          `background-image: url('${colorBlock.attr('data-color-choco-image')}')`);
+          `background-image: url('${chocoImage}')`);
 
       if (~colorBlock.attr('style').indexOf('#FFF')) {
         this.page.resultChocolateTextWrap.wrap.css('color', 'black');

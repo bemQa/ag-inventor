@@ -803,7 +803,7 @@ export function BlockbusterBuilder() {
         let previousProduct = currentCategoryParts[previousProductIndex];
 
         this.page.sliderBody.main.content
-            .directionButtonsWrap.left.title.html(previousProduct.title);
+            .directionButtonsWrap.left.title.html(previousProduct.title.replace(' ', '<br>'));
         this.page.sliderBody.main.content
             .directionButtonsWrap.left.image.attr('style',
             `background-image: url('${previousProduct.img.arrow}')`);
@@ -833,7 +833,7 @@ export function BlockbusterBuilder() {
           let nextProduct = currentCategoryParts[nextProductIndex];
 
           this.page.sliderBody.main.content
-              .directionButtonsWrap.right.title.html(nextProduct.title);
+              .directionButtonsWrap.right.title.html(nextProduct.title.replace(' ', '<br>'));
           this.page.sliderBody.main.content
               .directionButtonsWrap.right.image.attr('style',
               `background-image: url('${nextProduct.img.arrow}')`);
@@ -889,7 +889,7 @@ export function BlockbusterBuilder() {
       let previousProduct = currentCategoryParts[previousProductIndex];
 
       this.page.sliderBody.main.content
-          .directionButtonsWrap.left.title.html(previousProduct.title);
+          .directionButtonsWrap.left.title.html(previousProduct.title.replace(' ', '<br>'));
       this.page.sliderBody.main.content
           .directionButtonsWrap.left.image.attr('style',
           `background-image: url('${previousProduct.img.arrow}')`);
@@ -905,7 +905,7 @@ export function BlockbusterBuilder() {
       let nextProduct = currentCategoryParts[nextProductIndex];
 
       this.page.sliderBody.main.content
-          .directionButtonsWrap.right.title.html(nextProduct.title);
+          .directionButtonsWrap.right.title.html(nextProduct.title.replace(' ', '<br>'));
       this.page.sliderBody.main.content
           .directionButtonsWrap.right.image.attr('style',
           `background-image: url('${nextProduct.img.arrow}')`);

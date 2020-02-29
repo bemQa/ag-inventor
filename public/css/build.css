@@ -1510,6 +1510,7 @@ footer .footer-copyright span {
   transform: scaleX(-1);
 }
 .build-content .build--slider-body .build-body--main .build-body--content .build-body--button-wrap.build-body--button-wrap--right .build-button-title {
+  text-align: right;
   margin-left: 9px;
 }
 .build-content .build--slider-body .build-body--main .build-body--content .build-body--button-wrap.build-body--button-wrap--right .build-button-image {
@@ -1525,11 +1526,11 @@ footer .footer-copyright span {
 }
 .build-content .build--slider-body .build-body--main .build-body--content .build-body--button-wrap .build-button-title {
   font-size: 20px;
-  line-height: 18px;
   color: #C84F2B;
   height: 60px;
   display: flex;
   align-items: center;
+  line-height: 1.2;
 }
 .build-content .build--slider-body .build-body--main .build-body--content .build-body--button-wrap .build-button-image {
   height: 60px;

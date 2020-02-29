@@ -298,6 +298,7 @@
             }
 
             .build-button-title {
+              text-align: right;
               margin-left: 9px;
             }
 
@@ -317,11 +318,12 @@
 
           .build-button-title {
             font-size: 20px;
-            line-height: 18px;
             color: $color-choco-2;
             height: 60px;
             display: flex;
             align-items: center;
+            //max-width: 140px;
+            line-height: 1.2;
           }
 
           .build-button-image {

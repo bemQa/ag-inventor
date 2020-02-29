@@ -135,7 +135,6 @@ $(".mobile-menu-btn").on('click', function () {
   $(".menu").toggleClass('active');
 });
 
-
 export {
   stickFooter
 }

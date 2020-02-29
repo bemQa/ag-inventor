@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {stickFooter} from './app'
 import productsJSON from './../demo/ingredients';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
 export function BlockbusterBuilder() {
 
@@ -1146,3 +1147,380 @@ export function BlockbusterBuilder() {
   };
 }
 
+buildPartsHtml();
+
+function buildPartsHtml() {
+
+  const categories = [
+    {
+      title: "Орехи и семена",
+      elements: [
+        {
+          filename: "1_Арахис",
+          title: "Арахис"
+        },
+        {
+          filename: "2_Миндаль",
+          title: "Миндаль"
+        },
+        {
+          filename: "3_Фундук",
+          title: "Фундук"
+        },
+        {
+          filename: "4_Грецкий_орех",
+          title: "Грецкий орех"
+        },
+        {
+          filename: "5_Семена_льна",
+          title: "Семена льна"
+        },
+        {
+          filename: "6_Семена_чиа",
+          title: "Семена чиа"
+        },
+        {
+          filename: "7_Семена_амаранта",
+          title: "Семена амаранта"
+        },
+        {
+          filename: "8_Семена_тыквы",
+          title: "Семена тыквы"
+        },
+        {
+          filename: "9_Семена_подсолнечника",
+          title: "Семена подсолнечника"
+        },
+        {
+          filename: "10_Пекан",
+          title: "Пекан"
+        },
+        {
+          filename: "11_Фисташки",
+          title: "Фисташки"
+        },
+        {
+          filename: "12_Кешью",
+          title: "Кешью"
+        },
+        {
+          filename: "13_Мак",
+          title: "Мак"
+        },
+        {
+          filename: "14_Марципановая_начинка",
+          title: "Марципановая начинка"
+        },
+        {
+          filename: "15_Пралине",
+          title: "Пралине"
+        },
+      ]
+    },
+    {
+      title: "Фрукты и ягоды",
+      elements: [
+        {
+          filename: "16_Вишня",
+          title: "Вишня"
+        },
+        {
+          filename: "17_Апельсин",
+          title: "Апельсин"
+        },
+        {
+          filename: "18_Черника",
+          title: "Черника"
+        },
+        {
+          filename: "19_Малина",
+          title: "Малина"
+        },
+        {
+          filename: "20_Клубника",
+          title: "Клубника"
+        },
+        {
+          filename: "21_Лимон",
+          title: "Лимон"
+        },
+        {
+          filename: "22_Изюм",
+          title: "Изюм"
+        },
+        {
+          filename: "23_Клюква",
+          title: "Клюква"
+        },
+        {
+          filename: "24_Ананас",
+          title: "Ананас"
+        },
+        {
+          filename: "25_Ягодный_микс",
+          title: "Ягодный микс"
+        },
+        {
+          filename: "26_Маракуйа",
+          title: "Маракуйа"
+        },
+        {
+          filename: "27_Инжир_1260081442",
+          title: "Инжир"
+        },
+        {
+          filename: "28_Абрикос",
+          title: "Абрикос"
+        },
+        {
+          filename: "29_Манго",
+          title: "Манго"
+        },
+        {
+          filename: "30_Черная_смородина",
+          title: "Черная смородина"
+        },
+        {
+          filename: "31_Груша",
+          title: "Груша"
+        },
+        {
+          filename: "32_Персик",
+          title: "Персик"
+        },
+        {
+          filename: "33_Лайм",
+          title: "Лайм"
+        },
+        {
+          filename: "34_Ягоды_годжи",
+          title: "Ягоды годжи"
+        },
+        {
+          filename: "35_Киви",
+          title: "Киви"
+        },
+        {
+          filename: "36_Облепиха",
+          title: "Облепиха"
+        },
+        {
+          filename: "37_Слива",
+          title: "Слива"
+        },
+      ]
+    },
+    {
+      title: "Специи и травы",
+      elements: [
+        {
+          filename: "38_Роза",
+          title: "Роза"
+        },
+        {
+          filename: "39_Лемонграс",
+          title: "Лемонграс"
+        },
+        {
+          filename: "40_Чили",
+          title: "Чили"
+        },
+        {
+          filename: "41_Лакрица",
+          title: "Лакрица"
+        },
+        {
+          filename: "42_Имбирь",
+          title: "Имбирь"
+        },
+        {
+          filename: "43_Красный_перец",
+          title: "Красный перец"
+        },
+        {
+          filename: "44_Морская_соль",
+          title: "Морская соль"
+        },
+        {
+          filename: "45_Розмарин",
+          title: "Розмарин"
+        },
+        {
+          filename: "46_Мята",
+          title: "Мята"
+        },
+        {
+          filename: "47_Корица",
+          title: "Корица"
+        },
+        {
+          filename: "48_Черный_перец",
+          title: "Черный перец"
+        },
+        {
+          filename: "49_Васаби",
+          title: "Васаби"
+        },
+        {
+          filename: "50_Зеленый_чай",
+          title: "Зеленый чай"
+        },
+        {
+          filename: "51_Базилик",
+          title: "Базилик"
+        },
+        {
+          filename: "52_Гвоздика",
+          title: "Гвоздика"
+        },
+      ]
+    },
+    {
+      title: "Печенье и хлопья",
+      elements: [
+        {
+          filename: "53_Рисовые_хлопья",
+          title: "Рисовые хлопья"
+        },
+        {
+          filename: "54_Кукурузные_хлопья",
+          title: "Кукурузные хлопья"
+        },
+        {
+          filename: "55_Попкорн",
+          title: "Попкорн"
+        },
+        {
+          filename: "56_Ржаные_Хлопья",
+          title: "Ржаные Хлопья"
+        },
+        {
+          filename: "57_Крекер",
+          title: "Крекер"
+        },
+        {
+          filename: "58_Крендель",
+          title: "Крендель"
+        },
+        {
+          filename: "59_Хрустящее_печенье",
+          title: "Хрустящее печенье"
+        },
+        {
+          filename: "60_Овсяное_печенье",
+          title: "Овсяное печенье"
+        },
+        {
+          filename: "61_Вафли",
+          title: "Вафли"
+        },
+        {
+          filename: "62_Имбирный_пряник",
+          title: "Имбирный пряник"
+        },
+        {
+          filename: "63_Шоколадное_печенье",
+          title: "Шоколадное печенье"
+        },
+        {
+          filename: "64_Мягкий_бисквит",
+          title: "Мягкий бисквит"
+        },
+        {
+          filename: "65_Мюсли",
+          title: "Мюсли"
+        },
+        {
+          filename: "66_Зерновое_печенье",
+          title: "Зерновое печенье"
+        },
+      ]
+    },
+    {
+      title: "Сладости и другое",
+      elements: [
+        {
+          filename: "67_Безе",
+          title: "Безе"
+        },
+        {
+          filename: "68_Зефир",
+          title: "Зефир"
+        },
+        {
+          filename: "69_Цветное_драже",
+          title: "Цветное драже"
+        },
+        {
+          filename: "70_Кокосовая_стружка",
+          title: "Кокосовая стружка"
+        },
+        {
+          filename: "71_Какао-крупка",
+          title: "Какао-крупка"
+        },
+        {
+          filename: "72_Малиновое_монпансье",
+          title: "Малиновое монпансье"
+        },
+        {
+          filename: "73_Карамель",
+          title: "Карамель"
+        },
+        {
+          filename: "74_Кусочки_янтарной_карамели",
+          title: "Кусочки янтарной карамели"
+        },
+        {
+          filename: "75_Кусочки_помадки",
+          title: "Кусочки помадки"
+        },
+        {
+          filename: "76_Ирис",
+          title: "Ирис"
+        },
+        {
+          filename: "77_Медовые_кусочки",
+          title: "Медовые кусочки"
+        },
+        {
+          filename: "99_Фруктовые_желейки",
+          title: "Фруктовые желейки"
+        },
+      ]
+    },
+  ];
+
+  const template = `
+      <div class="product-info"
+         data-product-code="%code%"
+         data-product-title="%title%"
+         data-product-category="%category%"
+         data-product-img-full="%img%"
+         data-product-img-float="%img%"
+         data-product-img-for-add-animation="%img%"
+         data-product-img-arrow="%img%"
+         data-product-img-in-cart="%img%"></div>`;
+
+  let finalResults = [];
+
+  let imagesImports = [];
+
+  categories.map(category => {
+    category.elements.map(element => {
+      let templateEdited =
+          template.replace(/%code%/g, cyrillicToTranslit().transform(element.filename, '_'));
+      templateEdited = templateEdited.replace(/%title%/g, element.title);
+      templateEdited = templateEdited.replace(/%category%/g, category.title);
+      templateEdited = templateEdited.replace(/%img%/g, `../img/ingredients-02-29/${element.filename}.png`);
+      finalResults.push(templateEdited);
+      imagesImports.push(`import "../img/ingredients-02-29/${element.filename}.png";`);
+    });
+  });
+
+  if (~location.href.indexOf('?show-parts-code')) {
+    setTimeout(_ => {
+      console.log(finalResults.join("\r\n") + "\r\n" + imagesImports.join("\r\n"));
+    });
+  }
+}

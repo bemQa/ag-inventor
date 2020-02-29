@@ -1311,7 +1311,7 @@ export function BlockbusterBuilder() {
             if (typeof result.title !== 'undefined') {
               showServiceMessage({
                 title: result.title,
-                description: typeof result.description !== 'undefined'
+                body: typeof result.description !== 'undefined'
                     ? result.description
                     : '...'
               });
@@ -1330,7 +1330,7 @@ export function BlockbusterBuilder() {
   this.showServerError = function () {
     showServiceMessage({
       title: 'Функция временно недоступна',
-      description: 'Проводятся технические работы.'
+      body: 'Проводятся технические работы.'
     })
   };
 }

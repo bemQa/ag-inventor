@@ -1260,7 +1260,7 @@ export function BlockbusterBuilder() {
         : '/Home/SaveChoko';
 
     if (~location.href.indexOf('demo-failed')) {
-      url = '/https://ag2.n0.world/failed.php';
+      url = '/https://p24-json.n0.world/failed.php';
     }
 
     $.ajax({

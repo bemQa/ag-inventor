@@ -167,3 +167,7 @@ body.faq-page {
     }
   }
 }
+
+.faq--question-answer p:not(:last-child) {
+  margin-bottom: 7px;
+}

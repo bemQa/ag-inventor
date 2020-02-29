@@ -961,6 +961,10 @@ body.faq-page {
     height: auto;
   }
 }
+.faq--question-answer p:not(:last-child) {
+  margin-bottom: 7px;
+}
+
 .cup-page {
   background-image: url(/img/common/cup.png), url(/img/common/bg-2-2.jpg);
   background-position: center 160px, top center;

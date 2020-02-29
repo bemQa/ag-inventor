@@ -933,6 +933,7 @@ body.faq-page {
   max-height: 0;
   overflow: hidden;
   padding-left: 36px;
+  padding-right: 25px;
   color: #74360A;
   opacity: 0;
   transition: max-height 0.5s linear, opacity 0.2s linear;

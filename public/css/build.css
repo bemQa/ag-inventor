@@ -1727,13 +1727,14 @@ footer .footer-copyright span {
   background-size: contain;
 }
 .build-content .select-color--result .ingredient-float-image--1 {
-  background-size: 70px;
+  background-size: 90px;
   top: -9px;
-  left: -35px;
-  height: 100px;
+  left: 200px;
+  height: 125px;
   width: 100px;
 }
 .build-content .select-color--result .ingredient-float-image--2 {
+  display: none !important;
   top: -37px;
   right: -16px;
   height: 125px;
@@ -1744,10 +1745,11 @@ footer .footer-copyright span {
 .build-content .select-color--result .ingredient-float-image--3 {
   top: 129px;
   left: -82px;
-  height: 100px;
+  height: 80px;
   width: 100px;
 }
 .build-content .select-color--result .ingredient-float-image--4 {
+  display: none !important;
   top: 281px;
   left: -90px;
   height: 100px;
@@ -1755,12 +1757,13 @@ footer .footer-copyright span {
   background-size: 59px;
 }
 .build-content .select-color--result .ingredient-float-image--5 {
-  top: 203px;
-  left: 125px;
-  height: 125px;
-  width: 125px;
+  top: 215px;
+  left: 160px;
+  height: 119px;
+  width: 105px;
 }
 .build-content .select-color--result .ingredient-float-image--6 {
+  display: none !important;
   top: 275px;
   left: 224px;
   height: 150px;
@@ -2124,8 +2127,11 @@ footer .footer-copyright span {
   }
 
   .build-content .select-color--result .ingredient-float-image--1 {
-    top: 7px;
-    left: 7px;
+    top: 22px;
+    left: 182px;
+    background-size: contain;
+    height: 100px;
+    width: 75px;
   }
 
   .build-content .select-color--result .ingredient-float-image--2 {
@@ -2134,10 +2140,10 @@ footer .footer-copyright span {
   }
 
   .build-content .select-color--result .ingredient-float-image--3 {
-    top: 112px;
-    left: -34px;
-    height: 100px;
-    width: 100px;
+    top: 108px;
+    left: -38px;
+    height: 75px;
+    width: 75px;
   }
 
   .build-content .select-color--result .ingredient-float-image--4 {
@@ -2146,8 +2152,10 @@ footer .footer-copyright span {
   }
 
   .build-content .select-color--result .ingredient-float-image--5 {
-    top: 170px;
-    left: 123px;
+    top: 223px;
+    left: 149px;
+    height: 75px;
+    width: 75px;
   }
 
   .build-content .select-color--result .ingredient-float-image--6 {

@@ -284,7 +284,7 @@ export function BlockbusterBuilder() {
       let currentValue = $(e.target).val();
 
       $(e.target).val(
-          currentValue.replace(/[^а-яА-ЯёЁ0-9]/gim, ''));
+          currentValue.replace(/[^а-яА-ЯёЁ0-9\s\-]/gim, ''));
 
       this.result.title = $(e.target).val();
       this.page.resultChocolateTextWrap.title.text(this.result.title);

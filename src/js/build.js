@@ -275,10 +275,17 @@ export function BlockbusterBuilder() {
     });
 
     this.page.finalSlide.form.inputs.title.on('keyup', e => {
+
       if (typeof $(e.target).val().length !== 'undefined' &&
           typeof $(e.target).val().length > 25) {
         e.preventDefault();
       }
+
+      let currentValue = $(e.target).val();
+
+      $(e.target).val(
+          currentValue.replace(/[^а-яА-ЯёЁ0-9]/gim, ''));
+
       this.result.title = $(e.target).val();
       this.page.resultChocolateTextWrap.title.text(this.result.title);
     });
@@ -647,12 +654,18 @@ export function BlockbusterBuilder() {
 
       case 1:
       case 3:
+        if (this.addingIsLocked) {
+          return null;
+        }
         this.step++;
         this.loadByStep();
         this.saveStats();
         break;
 
       case 2:
+        if (this.addingIsLocked) {
+          return null;
+        }
 
         if (window.innerWidth > 780) {
 
@@ -737,7 +750,7 @@ export function BlockbusterBuilder() {
 
       if (this.firstStepState.currentCategory === null) {
         this.categories.map(category => {
-          if (~category.indexOf('рукты')) {
+          if (~category.indexOf('рехи')) {
             this.firstStepState.currentCategory = category;
           }
         });

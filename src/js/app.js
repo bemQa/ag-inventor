@@ -75,6 +75,10 @@ function stickFooter() {
 }
 
 window.showPopup = function (type) {
+  $('header').removeClass('menu-opened');
+  $('.mobile-menu-btn').removeClass('active');
+  $(".menu").removeClass('active');
+
   $('body').addClass('no-scroll');
   $('.popup-content.active').removeClass('active');
   $(`.popup, .popup-content--${type}`).addClass('active');
@@ -138,6 +142,12 @@ $(".mobile-menu-btn").on('click', function () {
   $('header').toggleClass('menu-opened');
   $(this).toggleClass('active');
   $(".menu").toggleClass('active');
+});
+
+$("menu a[onclick]").on('click', _ => {
+  $('header').removeClass('menu-opened');
+  $('.mobile-menu-btn').removeClass('active');
+  $(".menu").removeClass('active');
 });
 
 export {

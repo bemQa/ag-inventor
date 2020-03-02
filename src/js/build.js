@@ -628,6 +628,10 @@ export function BlockbusterBuilder() {
       params.push(`title=${this.result.title}`);
     }
 
+    if (this.result.chocoId) {
+      params.push(`chokoId=${this.result.chocoId}`);
+    }
+
     if (isFinal) {
       params.push('step=5');
     } else {

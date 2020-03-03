@@ -817,9 +817,6 @@ body.main-page .header-bg--mobile-addition {
   .cabinet-page-content .user-collection--wrap .user-collection--elements-list .user-collection--element:not(:first-child) {
     margin-top: 40px;
   }
-  .cabinet-page-content .user-collection--wrap .user-collection--elements-list .user-collection--element .user-collection--element-btn-wrap .user-collection--success-status {
-    display: none;
-  }
   .cabinet-page-content .user-collection--wrap .user-collection--elements-list .user-collection--creating-btn:not(:first-child) {
     margin-top: 20px;
   }

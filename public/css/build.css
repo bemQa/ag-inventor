@@ -1342,6 +1342,15 @@ footer .footer-copyright span {
   animation: build-fade-in 0.3s ease-out;
 }
 
+.build-page {
+  background-image: url(/img/common/bg-2-4.jpg);
+  background-size: auto calc(100% - 200px);
+  background-position: center 40px;
+}
+.build-page.step-5 {
+  background-image: url(/img/common/bg1-2.jpg);
+}
+
 .build-content {
   position: relative;
   box-sizing: border-box;
@@ -1479,6 +1488,8 @@ footer .footer-copyright span {
 .build-content .build--slider-body .build-body--main .build-body--title {
   text-align: center;
   font-size: 30px;
+  max-height: 36px;
+  overflow: visible;
   color: #C84F2B;
   transition: top 0.3s;
 }
@@ -1962,6 +1973,11 @@ footer .footer-copyright span {
   }
 }
 @media screen and (max-width: 780px) {
+  .build-page {
+    background-size: auto calc(100% - 340px);
+    background-position: center 40px;
+  }
+
   .build-content > .container {
     width: 100%;
     overflow-x: hidden;

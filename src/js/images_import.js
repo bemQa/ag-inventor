@@ -7,6 +7,8 @@ import '../img/common/arrow-down-polygon.svg';
 import '../img/common/bg.jpg';
 import '../img/common/bg-2.jpg';
 import '../img/common/bg-2-2.jpg';
+import '../img/common/bg-2-3.jpg';
+import '../img/common/bg-2-4.jpg';
 import '../img/common/burger.svg';
 import '../img/common/cabinet-icon.svg';
 import '../img/common/captcha-bg-arrow.svg';

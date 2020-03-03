@@ -87,6 +87,16 @@
   animation: build-fade-in .3s ease-out;
 }
 
+.build-page {
+  background-image: url("../img/common/bg-2-4.jpg");
+  background-size: auto calc(100% - 200px);
+  background-position: center 40px;
+
+  &.step-5 {
+    background-image: url("../img/common/bg1-2.jpg");
+  }
+}
+
 .build-content {
   position: relative;
   box-sizing: border-box;
@@ -250,6 +260,8 @@
       .build-body--title {
         text-align: center;
         font-size: 30px;
+        max-height: 36px;
+        overflow: visible;
         color: $color-choco-2;
         transition: top .3s;
       }
@@ -825,6 +837,11 @@
 }
 
 @media screen and (max-width: $adaptive-mobile-top) {
+
+  .build-page {
+    background-size: auto calc(100% - 340px);
+    background-position: center 40px;
+  }
 
   .build-content > .container {
     width: 100%;

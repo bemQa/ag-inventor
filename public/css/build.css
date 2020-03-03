@@ -1344,7 +1344,7 @@ footer .footer-copyright span {
 
 .build-page {
   background-image: url(/img/common/bg-2-4.jpg);
-  background-size: auto calc(100% - 200px);
+  background-size: cover;
   background-position: center 40px;
 }
 .build-page.step-5 {
@@ -1484,6 +1484,9 @@ footer .footer-copyright span {
 }
 .build-content .build--slider-body .build-body--main.step-2 .build-body--title {
   top: -30px;
+}
+.build-content .build--slider-body .build-body--main.step-2 .build-body--scene-wrap {
+  top: 30px;
 }
 .build-content .build--slider-body .build-body--main .build-body--title {
   text-align: center;
@@ -2106,6 +2109,10 @@ footer .footer-copyright span {
 
   .build-body--main.step-2 .build-content {
     margin-top: -41px;
+  }
+
+  .build-content .build--slider-body .build-body--main.step-2 .build-body--scene-wrap {
+    top: 0;
   }
 
   .build-content > .container.steps-3-4 {

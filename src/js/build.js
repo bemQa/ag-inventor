@@ -683,7 +683,7 @@ export function BlockbusterBuilder() {
 
           this.page.chocoAnimation.choco.css(
               'background-image',
-              `url('/img/common/${this.currentChocolate.code}.gif')`);
+              `url('/img/common/${this.result.choco}.gif')`);
 
           this.page.chocoAnimation.choco.animate({
             opacity: 1

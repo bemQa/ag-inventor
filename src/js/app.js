@@ -5,6 +5,8 @@ import './images_import';
 import '../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 import PerfectScrollbar from 'perfect-scrollbar';
 import {BlockbusterBuilder} from "./build";
+import 'select2/dist/css/select2.min.css';
+import {select2} from 'select2';
 
 $(document).ready(_ => {
   initDevState();
@@ -54,6 +56,27 @@ function bindListeners() {
         .toggleClass('faq--question--opened');
     window.faqScrollbar.update();
   });
+
+  if ($('#feedback_theme').length) {
+    $('#feedback_theme').select2({
+      placeholder: "Выбрать из списка",
+      minimumResultsForSearch: 10
+    });
+  }
+
+  if ($('.popup--feedback-submit-btn').length) {
+
+    if (~location.href.indexOf('?feedback-demo')) {
+      setTimeout(_ => {
+        showPopup('feedback-success');
+      }, 2000);
+    }
+
+   $('.popup--feedback-submit-btn').on('click', _ => {
+     $('.popup').removeClass('active');
+     $('body').removeClass('no-scroll');
+   })
+  }
 }
 
 function setPageSizeTypes() {

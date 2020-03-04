@@ -114,5 +114,10 @@ module.exports = {
       filename: './build/index.html',
       favicon: './src/img/favicon.ico'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/html/feedback.html',
+      filename: './feedback/index.html',
+      favicon: './src/img/favicon.ico'
+    }),
   ]
 };

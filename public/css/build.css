@@ -1,18 +1,4 @@
 @font-face {
-  font-family: "DINPro";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/DINPro-Regular.otf) format("opentype");
-}
-@font-face {
-  font-family: "DINPro";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(/fonts/DINPro-Medium.otf) format("opentype");
-}
-@font-face {
   font-family: "MDLZ";
   font-style: normal;
   font-weight: 300;
@@ -79,7 +65,7 @@ input, textarea, button {
 }
 
 body {
-  font-family: "DINPro", "Roboto", "Arial", sans-serif;
+  font-family: "PT Sans", "Roboto", "Arial", sans-serif;
   font-weight: normal;
   background-image: url(/img/common/bg.jpg);
   background-position: top center;
@@ -1213,7 +1199,7 @@ header .enter-link {
 footer {
   background-image: url(/img/common/footer-ellipse.svg);
   background-position: top center;
-  font-family: "DINPro", sans-serif;
+  font-family: "PT Sans", sans-serif;
   color: #4D1D85;
   font-size: 14px;
   text-align: center;

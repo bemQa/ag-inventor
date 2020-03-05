@@ -99,7 +99,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/img/templates/web_feedback.png);
+  background-image: url(/img/templates/step-5-desktop.png);
   background-position: center top;
   opacity: 0.6;
   min-height: 1000px;
@@ -1605,7 +1605,7 @@ footer .footer-copyright span {
   border-radius: 100px;
   margin: 0 auto;
   font-size: 11px;
-  padding-top: 17px;
+  padding: 17px 5px;
   line-height: 15px;
   color: #74360A;
 }
@@ -2286,9 +2286,15 @@ footer .footer-copyright span {
   right: 160px;
 }
 
+.build-content .build--slider-body.step-5 {
+  height: auto;
+  margin-bottom: -20px;
+}
+
 @media screen and (max-width: 780px) {
   .build-content .build--slider-body.step-5 {
     padding-top: 3px;
+    margin-bottom: 37px;
   }
 
   .sharing-slide {
@@ -2328,4 +2334,11 @@ footer .footer-copyright span {
     right: 0;
     margin: 3px calc(50% - 111px) 0;
   }
+}
+.sharing-description {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  color: #C84F2B;
 }

@@ -426,7 +426,7 @@
       border-radius: 100px;
       margin: 0 auto;
       font-size: 11px;
-      padding-top: 17px;
+      padding: 17px 5px;
       line-height: 15px;
       color: $color-choco;
 
@@ -1188,10 +1188,16 @@
   right: 160px;
 }
 
+.build-content .build--slider-body.step-5 {
+  height: auto;
+  margin-bottom: -20px;
+}
+
 @media screen and (max-width: $adaptive-mobile-top) {
 
   .build-content .build--slider-body.step-5 {
     padding-top: 3px;
+    margin-bottom: 37px;
   }
 
   .sharing-slide {
@@ -1247,3 +1253,10 @@
   }
 }
 
+.sharing-description {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  color: $color-choco-2;
+}

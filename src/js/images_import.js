@@ -25,7 +25,7 @@ import '../img/common/errors-500-mobile.png';
 import '../img/common/footer-ellipse.svg';
 import '../img/common/input-mark.svg';
 import '../img/common/menu-form.png';
-import '../img/common/mondelez.png';
+import '../img/common/mondelez.svg';
 import '../img/common/enter-icon.svg';
 import '../img/common/plus-icon.svg';
 import '../img/common/slider-arrow-left.svg';

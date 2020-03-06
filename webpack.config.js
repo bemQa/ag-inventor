@@ -9,9 +9,9 @@ function _path(p) {
 module.exports = {
   mode: "development",
   entry: [
-    './src/js/app.js',
-    './src/css/entry.scss',
-    './src/css/build.scss',
+    "./src/js/app.js",
+    "./src/css/entry.scss",
+    "./src/css/build.scss",
   ],
   devtool: 'inline-source-map',
   devServer: {

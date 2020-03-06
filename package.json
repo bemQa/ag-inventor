@@ -10,6 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
@@ -38,8 +39,10 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "cyrillic-to-translit-js": "^3.1.0",
     "perfect-scrollbar": "^1.5.0",
-    "select2": "^4.0.13"
+    "select2": "^4.0.13",
+    "unorm": "^1.6.0"
   }
 }

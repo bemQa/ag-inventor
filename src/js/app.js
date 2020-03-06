@@ -1,4 +1,5 @@
-// import "../css/entry.scss"
+import "@babel/polyfill";
+import "unorm";
 import $ from 'jquery'
 import {initDevState} from "./dev";
 import './images_import';

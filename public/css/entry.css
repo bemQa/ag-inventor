@@ -392,6 +392,7 @@ body.main-page .header-bg--mobile-addition {
   background-image: url(/img/common/ag-logo-desktop.png);
   background-position: top 37px center;
   background-size: 470px auto;
+  z-index: 1;
 }
 .main-page-content .main-page-composition {
   position: absolute;
@@ -402,6 +403,7 @@ body.main-page .header-bg--mobile-addition {
   background-image: url(/img/main/main-page-comp.png);
   background-size: 1920px 680px;
   background-position: top center;
+  z-index: 2;
 }
 .main-page-content .container {
   margin: 0 auto;

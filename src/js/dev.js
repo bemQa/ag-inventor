@@ -13,4 +13,8 @@ export function initDevState() {
   $('.dev button').on('click', (e) => {
     $('.template').toggle();
   });
+
+  if (~location.href.indexOf('delete-promo')) {
+    $('.cross-site-promo--wrap').remove();
+  }
 }

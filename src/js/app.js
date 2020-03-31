@@ -8,6 +8,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import {BlockbusterBuilder} from "./build";
 import 'select2/dist/css/select2.min.css';
 import {select2} from 'select2';
+import {LanguageHandler} from "./language";
 
 $(document).ready(_ => {
   initDevState();
@@ -18,6 +19,16 @@ $(document).ready(_ => {
   if ($('.build-content').length) {
     window.blockbusterBuilder = new BlockbusterBuilder().init();
   }
+
+  let languageInitTimeout = ~location.href.indexOf('8080')
+      ? 0
+      : 100;
+
+  window.languangeHandler = new LanguageHandler().init();
+
+  setTimeout(_ => {
+    window.languangeHandler.showOnPageLoading();
+  }, languageInitTimeout);
 });
 
 window.config = {
@@ -73,10 +84,10 @@ function bindListeners() {
       }, 2000);
     }
 
-   $('.popup--feedback-submit-btn').on('click', _ => {
-     $('.popup').removeClass('active');
-     $('body').removeClass('no-scroll');
-   })
+    $('.popup--feedback-submit-btn').on('click', _ => {
+      $('.popup').removeClass('active');
+      $('body').removeClass('no-scroll');
+    })
   }
 }
 

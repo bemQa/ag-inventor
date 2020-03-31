@@ -99,11 +99,10 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/img/templates/step-5-desktop.png);
+  background-image: url(/img/templates/web_main.png);
   background-position: center top;
   opacity: 0.6;
   min-height: 1000px;
-  display: none;
 }
 
 .dev {
@@ -392,7 +391,6 @@ body.main-page .header-bg--mobile-addition {
   background-image: url(/img/common/ag-logo-desktop.png);
   background-position: top 37px center;
   background-size: 470px auto;
-  z-index: 1;
 }
 .main-page-content .main-page-composition {
   position: absolute;
@@ -403,7 +401,6 @@ body.main-page .header-bg--mobile-addition {
   background-image: url(/img/main/main-page-comp.png);
   background-size: 1920px 680px;
   background-position: top center;
-  z-index: 2;
 }
 .main-page-content .container {
   margin: 0 auto;
@@ -1079,7 +1076,7 @@ header {
   font-size: 14px;
   position: relative;
   box-sizing: border-box;
-  z-index: 2;
+  z-index: 4;
 }
 header * {
   position: relative;
@@ -1171,6 +1168,119 @@ header .enter-link {
   background-position: 0 8px;
 }
 
+.change-language-select-popup {
+  font-family: MDLZ, sans-serif;
+}
+.change-language-select-popup.x-desktop {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 20px);
+  box-sizing: border-box;
+  background-color: #74360A;
+  border-radius: 0 0 30px 30px;
+  padding: 0;
+  color: white;
+}
+.change-language-select-popup .change-language-title {
+  width: 90px;
+  line-height: 1.2;
+}
+.change-language-select-popup .country-background-image {
+  position: relative;
+  width: 35px;
+  background-position: right center;
+  background-size: auto 22px;
+  height: 22px;
+  top: -3px;
+  margin-bottom: -6px;
+}
+.change-language-select-popup .change-language-select-popup--head {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 24px;
+  cursor: pointer;
+  position: relative;
+}
+.change-language-select-popup .change-language-select-popup--head.x-mobile {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  padding: 12px 18px;
+  border-top: 1px solid #c84f2b45;
+  border-bottom: 1px solid #c84f2b45;
+}
+.change-language-select-popup .change-language-select-popup--head.x-mobile::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  transition: all 0.2s;
+  background-image: url(/img/common/lang-mobile-menu_arrow.png);
+  background-size: 24px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.change-language-select-popup .change-language-select-popup--head.x-mobile.x-collapsed::after {
+  transform: rotate(180deg);
+}
+.change-language-select-popup .change-language-select-popup--body {
+  padding: 4px 0 12px;
+}
+.change-language-select-popup .change-language-select-popup--body .country-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 24px;
+  line-height: 1.2;
+}
+.change-language-select-popup .change-language-select-popup--body.x-mobile .country-block {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  padding: 8px 18px;
+}
+.change-language-select-popup.x-mobile .change-language-title,
+.change-language-select-popup.x-mobile .country-block .change-language-title {
+  width: calc(100% - 35px);
+}
+.change-language-select-popup.x-mobile .country-background-image {
+  background-position: left center;
+}
+.change-language-select-popup[data-country-code=ru] .change-language-select-popup--head .country-background-image,
+.change-language-select-popup .country-block[data-country-code=ru] .country-background-image {
+  background-image: url(/img/common/lang_ru.png);
+}
+.change-language-select-popup[data-country-code=kz] .change-language-select-popup--head .country-background-image,
+.change-language-select-popup .country-block[data-country-code=kz] .country-background-image {
+  background-image: url(/img/common/lang_kz.png);
+}
+.change-language-select-popup[data-country-code=mn] .change-language-select-popup--head .country-background-image,
+.change-language-select-popup .country-block[data-country-code=mn] .country-background-image {
+  background-image: url(/img/common/lang_mn.png);
+}
+.change-language-select-popup[data-country-code=ge] .change-language-select-popup--head .country-background-image,
+.change-language-select-popup .country-block[data-country-code=ge] .country-background-image {
+  background-image: url(/img/common/lang_ge.png);
+}
+.change-language-select-popup[data-country-code=uz] .change-language-select-popup--head .country-background-image,
+.change-language-select-popup .country-block[data-country-code=uz] .country-background-image {
+  background-image: url(/img/common/lang_uz.png);
+}
+
+@media screen and (max-width: 1700px) {
+  .change-language-select-popup.x-desktop {
+    left: auto;
+    right: 0;
+  }
+
+  header .container .desktop {
+    background-color: #74360A;
+  }
+
+  header .desktop .header-desktop-right {
+    padding-right: 180px;
+  }
+}
 @media screen and (max-width: 780px) {
   header .desktop {
     display: none;

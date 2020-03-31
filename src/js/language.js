@@ -94,40 +94,39 @@ function LanguageHandler() {
 
   this.changeLanguage = function (lang) {
 
+    this.state.languageWasChangedAlready = true;
+
     switch (lang) {
 
       case 'ru':
         this.page.desktop.wrap.attr('data-country-code', 'ru');
         this.page.mobile.wrap.attr('data-country-code', 'ru');
-        this.state.languageWasChangedAlready = true;
         break;
 
       case 'uz':
         this.page.desktop.wrap.attr('data-country-code', 'uz');
         this.page.mobile.wrap.attr('data-country-code', 'uz');
-        this.state.languageWasChangedAlready = true;
         break;
 
       case 'kz':
         this.page.desktop.wrap.attr('data-country-code', 'kz');
         this.page.mobile.wrap.attr('data-country-code', 'kz');
-        this.state.languageWasChangedAlready = true;
         break;
 
       case 'mn':
         this.page.desktop.wrap.attr('data-country-code', 'mn');
         this.page.mobile.wrap.attr('data-country-code', 'mn');
-        this.state.languageWasChangedAlready = true;
         break;
 
       case 'ge':
         this.page.desktop.wrap.attr('data-country-code', 'ge');
         this.page.mobile.wrap.attr('data-country-code', 'ge');
-        this.state.languageWasChangedAlready = true;
         break;
 
       default:
-        console.error('LanguageHandler: Неподдерживаемый язык. Доступные значения: ru, ')
+        this.page.desktop.wrap.attr('data-country-code', lang);
+        this.page.mobile.wrap.attr('data-country-code', lang);
+        console.error('LanguageHandler: Неподдерживаемый язык. Доступные значения: ru, uz, kz, mn, ge')
     }
   };
 }

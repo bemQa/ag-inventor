@@ -399,7 +399,7 @@ body.main-page .header-bg--mobile-addition {
   left: 0;
   width: 100%;
   height: 680px;
-  background-image: url(/img/main/main-page-comp.png);
+  background-image: url(/img/main/main-page-comp-2.png);
   background-size: 1920px 680px;
   background-position: top center;
 }
@@ -512,12 +512,12 @@ body.main-page .header-bg--mobile-addition {
     display: none;
   }
   .main-page-content .main-page-composition {
-    background-image: url(/img/mobile/main-page-comp-mobile.png);
+    background-image: url(/img/mobile/main-page-comp-mobile-2.png);
     background-size: auto 100%;
     top: 76px;
     height: 550px;
     width: 200%;
-    left: calc(-50% - 48px);
+    left: calc(-50%);
   }
   .main-page-content .container {
     padding-top: 543px;
@@ -558,7 +558,7 @@ body.main-page .header-bg--mobile-addition {
 
   .main-page-content .main-page-composition {
     height: 450px;
-    left: calc(-50% - 42px);
+    left: calc(-50%);
   }
 }
 @keyframes crossSitePromo {

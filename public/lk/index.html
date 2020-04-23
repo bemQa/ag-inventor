@@ -55,17 +55,44 @@
 
   <div class="container">
 
-    <div class="cabinet--contacts-section">
-      <div class="cabinet--name">
-        Александр Антонов-Гоностаев
+    <div class="cabinet--header">
+
+      <div class="cabinet--contacts-section">
+        <div class="cabinet--name">
+          Александр Антонов-Гоностаев
+        </div>
+        <div class="cabinet--email">
+          a_ermine@gmail.com
+        </div>
+        <a class="cabinet--exit-btn"
+           href="#logout">
+          Выйти
+        </a>
       </div>
-      <div class="cabinet--email">
-        a_ermine@gmail.com
+
+      <div class="cabinet--coins-ui">
+
+        <div class="coins-ui--img"></div>
+
+        <div class="coins-ui--common">
+          <div class="coins-ui--common--value">
+            6
+          </div>
+          <div class="coins-ui--common--desc">
+            Мои
+            <br>
+            Альпен-коины
+          </div>
+        </div>
+
+        <div class="coins-ui--tip-wrap">
+          <a class="coins-ui--tip" href="#">
+            Зачем нужны коины?
+          </a>
+        </div>
+
       </div>
-      <a class="cabinet--exit-btn"
-         href="#logout">
-        Выйти
-      </a>
+
     </div>
 
     <div class="user-collection--wrap">
@@ -120,6 +147,8 @@
             </a>
           </div>
         </div>
+
+        <!--
 
         <div class="user-collection--element">
           <div class="user-collection--element-body white-choco-bg">
@@ -190,6 +219,8 @@
           </div>
         </div>
 
+        -->
+
         <a class="user-collection--creating-btn"
            href="#create-collection">
           <div class="user-collection--element-body">
@@ -198,6 +229,47 @@
         </a>
 
       </div>
+    </div>
+
+    <div class="friends-invitations">
+
+      <div class="friends-invitations--description">
+        <div class="friends-invitations--description--title">
+          Пригласи своих друзей
+        </div>
+        <div class="friends-invitations--description--content">
+          Создавай новые вкусы вместе
+          <br>
+          со своими друзьями и получай
+          <br>
+          <b>1 коин</b> за каждого друга
+        </div>
+      </div>
+
+      <div class="friends-invitations--form">
+        <div class="friends-invitations--form--title">
+          Мой промокод
+        </div>
+        <div class="friends-invitations--form--tip-btn"></div>
+        <div class="friends-invitations--form--body">
+          <div class="friends-invitations--form--code">
+            <div class="friends-invitations--form--code--value">
+              JS73GF9
+            </div>
+            <button class="friends-invitations--form--code--copy-btn"
+                    onclick="navigator.clipboard.writeText(
+                document.querySelector('.friends-invitations--form--code--value').innerHTML.trim());"></button>
+          </div>
+          <div class="friends-invitations--form--social-buttons">
+            <a class="friends-invitations--form--social-buttons--vk" href="#"></a>
+            <a class="friends-invitations--form--social-buttons--ok" href="#"></a>
+          </div>
+        </div>
+        <div class="friends-invitations--form--counter">
+          Друзей зарегистрировано: 1 из 3
+        </div>
+      </div>
+
     </div>
 
   </div>

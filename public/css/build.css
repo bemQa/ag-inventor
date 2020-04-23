@@ -99,7 +99,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/img/templates/web_main.png);
+  background-image: url(/img/templates/mobile_cabinet.png);
   background-position: center top;
   opacity: 0.6;
   min-height: 1000px;
@@ -645,25 +645,71 @@ body.main-page .header-bg--mobile-addition {
   max-width: 100%;
   margin: 0 auto;
 }
-.cabinet-page-content .cabinet--contacts-section {
-  text-align: center;
+.cabinet-page-content .cabinet--header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 35px;
+}
+.cabinet-page-content .cabinet--header .cabinet--contacts-section {
+  text-align: left;
   color: #C84F2B;
 }
-.cabinet-page-content .cabinet--contacts-section .cabinet--name {
+.cabinet-page-content .cabinet--header .cabinet--contacts-section .cabinet--name {
   font-size: 17px;
   font-weight: 500;
   margin-bottom: 3px;
 }
-.cabinet-page-content .cabinet--contacts-section .cabinet--email {
+.cabinet-page-content .cabinet--header .cabinet--contacts-section .cabinet--email {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 12px;
   opacity: 0.5;
 }
-.cabinet-page-content .cabinet--contacts-section .cabinet--exit-btn {
+.cabinet-page-content .cabinet--header .cabinet--contacts-section .cabinet--exit-btn {
   font-size: 15px;
   text-decoration: underline;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 150px;
+  font-family: MDLZ, sans-serif;
+  color: #C84F2B;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common .coins-ui--common--value {
+  font-size: 50px;
+  line-height: 43px;
+  margin-right: 11px;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common .coins-ui--common--desc {
+  font-size: 16px;
+  line-height: 18px;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--tip-wrap {
+  text-align: right;
+  margin-top: 11px;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--tip-wrap .coins-ui--tip {
+  font-size: 14px;
+  color: rgba(116, 54, 10, 0.5);
+  text-decoration: underline;
+}
+.cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--img {
+  position: absolute;
+  width: 115px;
+  height: 105px;
+  bottom: 4px;
+  right: 120px;
+  background-image: url(/img/coins-update/coin.png);
+  background-size: cover;
 }
 .cabinet-page-content .user-collection--wrap .user-collection--section-title {
   font-family: MDLZ, sans-serif;
@@ -783,6 +829,100 @@ body.main-page .header-bg--mobile-addition {
   background-position: center;
   background-size: 17px;
 }
+.cabinet-page-content .friends-invitations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 531px;
+  margin: 56px auto 12px;
+  font-family: MDLZ, sans-serif;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--description {
+  text-align: left;
+  padding-right: 20px;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--description .friends-invitations--description--title {
+  color: #C84F2B;
+  font-size: 21px;
+  margin-bottom: 11px;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--description .friends-invitations--description--content {
+  color: #74360A;
+  font-size: 16px;
+  line-height: 21px;
+  font-family: "PT Sans", sans-serif;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form {
+  position: relative;
+  top: 3px;
+  width: 274px;
+  padding: 12px 17px;
+  background-image: url(/img/coins-update/coins-bg.png);
+  background-size: cover;
+  border-radius: 20px;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--title {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--tip-btn {
+  position: absolute;
+  top: 9px;
+  right: 18px;
+  height: 15px;
+  width: 15px;
+  background-image: url(/img/coins-update/how-to.svg);
+  cursor: pointer;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body {
+  margin: 11px 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--code {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 140px;
+  padding-left: 15px;
+  padding-right: 5px;
+  background-color: white;
+  border-radius: 20px;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--code .friends-invitations--form--code--value {
+  font-size: 21px;
+  color: #C84F2B;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--code .friends-invitations--form--code--copy-btn {
+  width: 32px;
+  height: 32px;
+  background-image: url(/img/coins-update/copy.svg);
+  background-size: cover;
+  border-radius: 100%;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--social-buttons {
+  display: flex;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--social-buttons > * {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--social-buttons .friends-invitations--form--social-buttons--vk {
+  background-image: url(/img/coins-update/vk-btn.svg);
+  margin-right: 5px;
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--social-buttons .friends-invitations--form--social-buttons--ok {
+  background-image: url(/img/coins-update/ok-btn.svg);
+}
+.cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--counter {
+  text-align: center;
+  font-size: 12px;
+  color: white;
+}
 
 @media screen and (max-width: 780px) {
   .cabinet-page-content {
@@ -792,6 +932,44 @@ body.main-page .header-bg--mobile-addition {
   .cabinet-page-content .container {
     width: 100%;
     padding: 0 20px;
+  }
+  .cabinet-page-content .cabinet--header {
+    align-items: flex-end;
+    margin: -5px auto 31px;
+    max-width: 336px;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--contacts-section {
+    flex-grow: 1;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--contacts-section .cabinet--email {
+    font-size: 12px;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui {
+    flex-grow: 1;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common {
+    flex-direction: column;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common .coins-ui--common--value {
+    margin-right: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common .coins-ui--common--desc {
+    text-align: right;
+    font-size: 13px;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--common .coins-ui--common--desc br {
+    display: none;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--tip-wrap {
+    margin-top: 6px;
+  }
+  .cabinet-page-content .cabinet--header .cabinet--coins-ui .coins-ui--img {
+    width: 82px;
+    height: 75px;
+    right: 15px;
+    bottom: 42px;
   }
   .cabinet-page-content .user-collection--wrap .user-collection--section-title {
     margin-bottom: 40px;
@@ -805,6 +983,35 @@ body.main-page .header-bg--mobile-addition {
   }
   .cabinet-page-content .user-collection--wrap .user-collection--elements-list .user-collection--creating-btn:not(:first-child) {
     margin-top: 20px;
+  }
+  .cabinet-page-content .friends-invitations {
+    flex-direction: column;
+    margin-bottom: 40px;
+    max-width: 224px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--description {
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--description .friends-invitations--description--title {
+    font-size: 21px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--description .friends-invitations--description--content {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--description .friends-invitations--description--content br {
+    display: none;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--form {
+    width: 274px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--title {
+    font-size: 16px;
+  }
+  .cabinet-page-content .friends-invitations .friends-invitations--form .friends-invitations--form--body .friends-invitations--form--code {
+    width: 140px;
   }
 }
 body.faq-page {

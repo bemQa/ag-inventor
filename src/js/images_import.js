@@ -203,3 +203,7 @@ import "../img/ingredients-02-29/75_Кусочки_помадки.png";
 import "../img/ingredients-02-29/76_Ирис.png";
 import "../img/ingredients-02-29/77_Медовые_кусочки.png";
 import "../img/ingredients-02-29/99_Фруктовые_желейки.png";
+
+import "../img/preloader/choc1.png";
+import "../img/preloader/choc2.png";
+import "../img/preloader/choc3.png";

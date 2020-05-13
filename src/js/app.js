@@ -189,3 +189,9 @@ export {
   stickFooter,
   showServiceMessage
 }
+
+$(window).on('load', function() {
+  setTimeout(function(){
+    $('#preloader').fadeOut();
+  },500);
+});

@@ -119,5 +119,15 @@ module.exports = {
       filename: './feedback/index.html',
       favicon: './src/img/favicon.ico'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/html/expert.html',
+      filename: './expert/index.html',
+      favicon: './src/img/favicon.ico'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/html/expert-profile.html',
+      filename: './expert-profile/index.html',
+      favicon: './src/img/favicon.ico'
+    }),
   ]
 };

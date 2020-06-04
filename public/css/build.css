@@ -644,7 +644,7 @@ body.main-page .header-bg--mobile-addition {
   right: 0;
   top: 70px;
   opacity: 1;
-  height: 102px;
+  height: auto;
   width: 302px;
   padding: 15px;
   border-radius: 20px;
@@ -890,6 +890,33 @@ body.main-page .header-bg--mobile-addition {
   background-image: url(/img/common/plus-icon.svg);
   background-position: center;
   background-size: 17px;
+}
+.cabinet-page-content .lk-expert-info {
+  margin: 30px auto 40px;
+  text-align: center;
+}
+.cabinet-page-content .lk-expert-info .lk-expert-info-title {
+  position: relative;
+  font-family: MDLZ, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #C84F2B;
+  max-width: 330px;
+  width: 100%;
+  margin: 0 auto 18px;
+}
+.cabinet-page-content .lk-expert-info .lk-expert-info-title.disabled .expert-trigger {
+  position: absolute;
+  top: 21px;
+  right: -15px;
+  height: 15px;
+  width: 15px;
+  background-image: url(/img/expert/how-to.svg);
+  cursor: pointer;
+}
+.cabinet-page-content .lk-expert-info .button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 .cabinet-page-content .friends-invitations {
   display: flex;
@@ -1329,6 +1356,7 @@ body.faq-page {
   background-image: url(/img/common/menu-form.png);
   background-position: top center;
   background-size: auto 100%;
+  z-index: 1;
 }
 .header-bg--mobile-addition a {
   display: block;
@@ -1374,8 +1402,18 @@ header .desktop a {
   cursor: pointer;
   line-height: 38px;
 }
+@media screen and (max-width: 1000px) {
+  header .desktop a {
+    font-size: 12px;
+  }
+}
 header .desktop a.active-link {
   font-size: 18px;
+}
+@media screen and (max-width: 1000px) {
+  header .desktop a.active-link {
+    font-size: 16px;
+  }
 }
 header .desktop a.cabinet-link {
   padding-left: 31px;
@@ -1417,10 +1455,12 @@ header .desktop .header-desktop-left {
   justify-content: flex-start;
 }
 header .desktop .header-desktop-left a {
-  margin-right: 47px;
+  margin-right: 40px;
 }
-header .desktop .header-desktop-left a.special-page-link {
-  margin-right: 71px;
+@media screen and (max-width: 1000px) {
+  header .desktop .header-desktop-left a {
+    margin-right: 30px;
+  }
 }
 header .desktop .header-desktop-right {
   display: flex;

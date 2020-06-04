@@ -244,6 +244,37 @@
     }
   }
 
+  .lk-expert-info {
+    margin: 30px auto 40px;
+    text-align: center;
+
+    .lk-expert-info-title {
+      position: relative;
+      font-family: MDLZ, sans-serif;
+      font-size: 16px;
+      line-height: 19px;
+      color: $color-choco-2;
+      max-width: 330px;
+      width: 100%;
+      margin: 0 auto 18px;
+
+      &.disabled .expert-trigger {
+        position: absolute;
+        top: 21px;
+        right: -15px;
+        height: 15px;
+        width: 15px;
+        background-image: url("../img/expert/how-to.svg");
+        cursor: pointer;
+      }
+    }
+
+    .button.disabled {
+      opacity: .5;
+      pointer-events: none;
+    }
+  }
+
   .friends-invitations {
     display: flex;
     justify-content: space-between;

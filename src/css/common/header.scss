@@ -21,6 +21,7 @@
   background-image: url("../img/common/menu-form.png");
   background-position: top center;
   background-size: auto 100%;
+  z-index: 1;
 
   a {
     display: block;
@@ -70,8 +71,16 @@ header {
       cursor: pointer;
       line-height: 38px;
 
+      @media screen and (max-width: $adaptive-medium-middle) {
+        font-size: 12px;
+      }
+
       &.active-link {
         font-size: 18px;
+
+        @media screen and (max-width: $adaptive-medium-middle) {
+          font-size: 16px;
+        }
       }
 
       &.cabinet-link {
@@ -133,10 +142,10 @@ header {
       justify-content: flex-start;
 
       a {
-        margin-right: 47px;
+        margin-right: 40px;
 
-        &.special-page-link {
-          margin-right: 71px;
+        @media screen and (max-width: $adaptive-medium-middle) {
+          margin-right: 30px;
         }
       }
     }

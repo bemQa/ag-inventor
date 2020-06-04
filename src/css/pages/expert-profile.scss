@@ -1,0 +1,160 @@
+.expert-profile-page-content {
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 90px;
+
+  .container {
+    position: relative;
+    box-sizing: border-box;
+    width: 600px;
+    margin: 80px auto 20px;
+  }
+
+  .expert-profile-title {
+    font-family: 'MDLZ', sans-serif;
+    font-size: 30px;
+    color: $color-choco-2;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .expert-profile-description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: $color-choco;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .expert-profile-inputs-blocks {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+  }
+
+  .expert-profile-form-left {
+    width: 280px;
+  }
+
+  .expert-profile-form-right {
+    width: 280px;
+  }
+
+  .input-group {
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+      padding-left: 20px;
+    }
+
+    input, select {
+      font-family: "PT Sans", sans-serif;
+      width: 100%;
+      border-radius: 100px;
+      border: none;
+      outline: none;
+      font-size: 18px;
+      padding: 14px 20px;
+      color: $color-choco-2;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      font-family: "PT Sans", sans-serif;
+      width: 100%;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      font-size: 18px;
+      padding: 14px 20px;
+      color: $color-choco-2;
+      box-sizing: border-box;
+      height: 306px;
+      resize: none;
+    }
+  }
+
+  .expert-profile-submit-btn-wrap {
+    text-align: center;
+
+    .button {
+      padding: 9px 64px;
+    }
+  }
+
+}
+
+@media screen and (max-width: $adaptive-mobile-top) {
+
+  .expert-profile-page-content .container {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 320px;
+    margin: 83px auto 20px;
+  }
+
+  .expert-profile-page-content .expert-profile-inputs-blocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+
+  .expert-profile-page-content .expert-profile-form-right {
+    width: 100%;
+  }
+
+  .expert-profile-page-content .expert-profile-form-left {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .expert-profile-page-content input,
+  .expert-profile-page-content textarea,
+  .expert-profile-page-content select {
+    max-width: 100%;
+  }
+
+  .expert-profile-page-content {
+    padding-bottom: 25px;
+  }
+}
+
+.popup-content--expert-profile-success {
+
+  .popup-container--expert-profile-title {
+
+    .popup-title {
+      text-align: center;
+      font-family: MDLZ, sans-serif;
+      font-size: 24px;
+      max-width: 190px;
+      margin: 0 auto 16px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 15px;
+      margin-bottom: 0;
+      font-family: "PT Sans", sans-serif;
+    }
+  }
+}
+
+.popup .popup-content .popup-container.popup-container--expert-profile-title {
+  padding: 31px 20px 30px;
+}
+
+
+.popup .popup-content .popup-container.popup-expert-profile-submit-btn-wrap {
+  padding: 0 20px 27px;
+  text-align: center;
+}

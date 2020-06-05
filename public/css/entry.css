@@ -1678,12 +1678,12 @@ body.expert-page .header-bg--mobile-addition {
 }
 .expert-page-content .find-expert .find-expert-img {
   position: absolute;
-  top: -45px;
+  top: -50px;
   left: 450px;
   right: 0;
   margin: auto;
-  width: 534px;
-  height: 343px;
+  width: 563px;
+  height: 361px;
   background: url(/img/expert/expert-img.png) center no-repeat;
   background-size: cover;
   z-index: 4;
@@ -2446,6 +2446,14 @@ footer .footer-links {
 }
 footer .footer-links a {
   text-decoration: underline;
+}
+footer .footer-links .expert-rules {
+  margin-right: 60px;
+}
+@media screen and (max-width: 780px) {
+  footer .footer-links .expert-rules {
+    margin-right: 0;
+  }
 }
 footer .footer-logo {
   width: 138px;

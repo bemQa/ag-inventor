@@ -1657,6 +1657,14 @@ footer .footer-links {
 footer .footer-links a {
   text-decoration: underline;
 }
+footer .footer-links .expert-rules {
+  margin-right: 60px;
+}
+@media screen and (max-width: 780px) {
+  footer .footer-links .expert-rules {
+    margin-right: 0;
+  }
+}
 footer .footer-logo {
   width: 138px;
   height: auto;

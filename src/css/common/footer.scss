@@ -40,6 +40,14 @@ footer {
     a {
       text-decoration: underline;
     }
+
+    .expert-rules {
+      margin-right: 60px;
+
+      @media screen and (max-width: $adaptive-mobile-top) {
+        margin-right: 0;
+      }
+    }
   }
 
   .footer-logo {

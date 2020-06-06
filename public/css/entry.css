@@ -1688,7 +1688,7 @@ body.expert-page .header-bg--mobile-addition {
   background-size: cover;
   z-index: 4;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1700px) {
   .expert-page-content .find-expert .find-expert-img {
     z-index: auto;
   }

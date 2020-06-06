@@ -182,7 +182,7 @@ body.expert-page {
       background-size: cover;
       z-index: 4;
 
-      @media screen and (max-width: $adaptive-medium-top) {
+      @media screen and (max-width: 1700px) {
         z-index: auto;
       }
 

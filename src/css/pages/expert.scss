@@ -7,6 +7,14 @@ body.expert-page {
   }
 }
 
+.expert-page header {
+  z-index: 5;
+
+  @media screen and (max-width: $adaptive-mobile-top) {
+    z-index: 4;
+  }
+}
+
 .br-mobile {
   display: none;
 
@@ -55,7 +63,7 @@ body.expert-page {
     margin: 0 auto;
 
     @media screen and (max-width: $adaptive-mobile-top) {
-      max-width: 270px;
+      max-width: 320px;
     }
   }
 
@@ -154,6 +162,10 @@ body.expert-page {
     position: relative;
     min-height: 540px;
     background-position: center -250px;
+
+    @media screen and (max-width: $adaptive-mobile-top) {
+      background-position: center;
+    }
 
     .ag-logo-expert {
       position: absolute;
@@ -262,6 +274,10 @@ body.expert-page {
     position: relative;
     min-height: 920px;
     background-position: center 0;
+
+    @media screen and (max-width: $adaptive-mobile-top) {
+      background-position: center;
+    }
 
     &::before {
       content: '';
@@ -472,6 +488,10 @@ body.expert-page {
     margin-bottom: -50px;
     background-position: center -150px;
 
+    @media screen and (max-width: $adaptive-mobile-top) {
+      background-position: center -50px;
+    }
+
     .container {
       padding: 30px 15px 95px;
     }
@@ -479,7 +499,7 @@ body.expert-page {
     .icons-block {
       display: flex;
       justify-content: space-between;
-      width: 620px;
+      width: 660px;
       margin: 35px auto;
 
       @media screen and (max-width: $adaptive-mobile-top) {
@@ -503,6 +523,9 @@ body.expert-page {
     }
 
     .icon-text-desc {
+      max-width: 150px;
+      width: 100%;
+      margin: auto;
       font-size: 14px;
       line-height: 17px;
       color: $color-choco;

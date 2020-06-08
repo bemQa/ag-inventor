@@ -1524,6 +1524,15 @@ body.expert-page .header-bg--mobile-addition {
   display: none;
 }
 
+.expert-page header {
+  z-index: 5;
+}
+@media screen and (max-width: 780px) {
+  .expert-page header {
+    z-index: 4;
+  }
+}
+
 .br-mobile {
   display: none;
 }
@@ -1573,7 +1582,7 @@ body.expert-page .header-bg--mobile-addition {
 }
 @media screen and (max-width: 780px) {
   .expert-page-content .expert-title {
-    max-width: 270px;
+    max-width: 320px;
   }
 }
 .expert-page-content .expert-subtitle {
@@ -1660,6 +1669,11 @@ body.expert-page .header-bg--mobile-addition {
   position: relative;
   min-height: 540px;
   background-position: center -250px;
+}
+@media screen and (max-width: 780px) {
+  .expert-page-content .find-expert {
+    background-position: center;
+  }
 }
 .expert-page-content .find-expert .ag-logo-expert {
   position: absolute;
@@ -1765,6 +1779,11 @@ body.expert-page .header-bg--mobile-addition {
   position: relative;
   min-height: 920px;
   background-position: center 0;
+}
+@media screen and (max-width: 780px) {
+  .expert-page-content .expert-qualities {
+    background-position: center;
+  }
 }
 .expert-page-content .expert-qualities::before {
   content: "";
@@ -1956,13 +1975,18 @@ body.expert-page .header-bg--mobile-addition {
   margin-bottom: -50px;
   background-position: center -150px;
 }
+@media screen and (max-width: 780px) {
+  .expert-page-content .expert-why {
+    background-position: center -50px;
+  }
+}
 .expert-page-content .expert-why .container {
   padding: 30px 15px 95px;
 }
 .expert-page-content .expert-why .icons-block {
   display: flex;
   justify-content: space-between;
-  width: 620px;
+  width: 660px;
   margin: 35px auto;
 }
 @media screen and (max-width: 780px) {
@@ -1983,6 +2007,9 @@ body.expert-page .header-bg--mobile-addition {
   text-align: center;
 }
 .expert-page-content .expert-why .icon-text-desc {
+  max-width: 150px;
+  width: 100%;
+  margin: auto;
   font-size: 14px;
   line-height: 17px;
   color: #74360A;

@@ -48,10 +48,21 @@
     }
 
     label {
+      position: relative;
       display: block;
       font-size: 13px;
       margin-bottom: 5px;
       padding-left: 20px;
+
+      .expert-video-trigger {
+        position: absolute;
+        top: 0;
+        left: 120px;
+        height: 15px;
+        width: 15px;
+        background-image: url("../img/expert/how-to1.svg");
+        cursor: pointer;
+      }
     }
 
     input, select {

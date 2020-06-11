@@ -106,7 +106,7 @@
 
           <div class="input-group input-group--text">
             <label for="expert-profile_link">
-              Ссылка на видео
+              Ссылка на видео <div class="expert-video-trigger" onclick="showPopup('expert-video-info');"></div>
             </label>
             <input type="text"
                    name="expert-profile_link"
@@ -333,6 +333,18 @@
       </div>
     </form>
 
+  </div>
+
+  <div class="popup-content popup-content--expert-video-info">
+      <div class="popup-close"></div>
+      <div class="popup-container popup-container--feedback-title">
+          <div class="popup-title" style="margin-bottom: 0;">Сними видео о том, почему ты любишь Alpen Gold и почему именно ты можешь стать нашим экспертом. Выложи его в VK, Instagram или Одноклассники с хештегом #хочубытьэкспертомAlpenGold и добавь ссылку к анкете. Готово! Ты в отборе</div>
+      </div>
+      <div class="popup-container popup-feedback-submit-btn-wrap">
+          <button class="button button--blue popup--feedback-submit-btn">
+              Понятно
+          </button>
+      </div>
   </div>
 </div>
 
